@@ -1,0 +1,1554 @@
+{
+  "subjects": [
+    "SENG1050"
+  ],
+  "cards": [
+    {
+      "front": "What is the Internet",
+      "back": "The Internet is a **global network** that connects billions of computing devices. It is fundamentally a **network of networks** that is constantly growing and changing. It functions by joining together many otherwise incompatible Local Area Networks (LANs) and Wide Area Networks (WANs) into a single network. This infrastructure allows computing devices to be connected and communicate with one another. Its operation is based on a set of **agreed-upon standards** that all connected computing devices must understand.",
+      "subject": "SENG1050",
+      "week": "1",
+      "category": "Internet",
+      "difficulty": "easy",
+      "stats": {
+        "correct": 0,
+        "wrong": 0
+      },
+      "id": "cc54leuk"
+    },
+    {
+      "front": "What is a Network?",
+      "back": "A Network is defined as a **group of computing devices that are connected together to permit the (rapid) transfer of information** between them.",
+      "subject": "SENG1050",
+      "week": "1",
+      "category": "Network Concepts",
+      "difficulty": "easy",
+      "stats": {
+        "correct": 0,
+        "wrong": 0
+      },
+      "id": "nwk001"
+    },
+    {
+      "front": "Compare Local Area Network (LAN) and Wide Area Network (WAN).",
+      "back": "A **Local Area Network (LAN)** is typically cheap and easy to install, geographically close (making it easy to maintain and secure), and controlled at the department/group level. In contrast, a **Wide Area Network (WAN)** is effective for large transnational companies, and its transmissions don't burden local LANs as they route through special purpose computers. However, WANs are expensive due to planning, infrastructure, and hardware costs, and different LAN/WAN technologies are often incompatible.",
+      "subject": "SENG1050",
+      "week": "1",
+      "category": "Network Categories",
+      "difficulty": "medium",
+      "stats": {
+        "correct": 0,
+        "wrong": 0
+      },
+      "id": "lanwan001"
+    },
+    {
+      "front": "Name and describe four LAN Physical Topologies.",
+      "back": "Four LAN Physical Topologies include: \n*   **Bus:** All computers share a single line of communication and require a mechanism to avoid or detect collisions.\n*   **Ring:** Each computer communicates only with its neighbours, forming a cycle or ring, and information is relayed in one direction.\n*   **Star:** All computers communicate via a central switch, hub, or router.\n*   **Mesh:** Every computer has a direct line to every other computer.\n*   **Tree:** A bus topology with branches.",
+      "subject": "SENG1050",
+      "week": "1",
+      "category": "Network Topologies",
+      "difficulty": "medium",
+      "stats": {
+        "correct": 0,
+        "wrong": 0
+      },
+      "id": "lantopo001"
+    },
+    {
+      "front": "What are Intranet, Extranet, and Virtual Private Network (VPN)?",
+      "back": "These are special networks:\n*   An **Intranet** is like the Internet but is only accessible from within a certain area, such as a home/office network. It's a private network, usually owned by a company, used to provide information and applications for its employees.\n*   An **Extranet** refers to parts of a company’s network that can be accessed from outside, often restricted to suppliers, vendors, and/or customers. It can include webpages and websites.\n*   A **Virtual Private Network (VPN)** is a way for a computer to securely access a company’s intranet from outside via the Internet.",
+      "subject": "SENG1050",
+      "week": "1",
+      "category": "Special Networks",
+      "difficulty": "easy",
+      "stats": {
+        "correct": 0,
+        "wrong": 0
+      },
+      "id": "specnet001"
+    },
+    {
+      "front": "What is the Internet Backbone?",
+      "back": "The Internet Backbone is one of the **core components of the Internet**, where the largest and fastest networks are linked together with fibre-optic connections and high-performance routers. These backbone links carry the majority of the traffic, often referred to as the 'information superhighway'.",
+      "subject": "SENG1050",
+      "week": "1",
+      "category": "Internet Infrastructure",
+      "difficulty": "easy",
+      "stats": {
+        "correct": 0,
+        "wrong": 0
+      },
+      "id": "intback001"
+    },
+    {
+      "front": "Why is 'switching' a better solution than point-to-point connections for devices?",
+      "back": "A direct point-to-point connection between each pair of devices is **impractical** due to the sheer number of possible connections. Switching offers a better solution by allowing communication via a series of interlinked nodes called **switches/routers**, making the network more scalable and efficient.",
+      "subject": "SENG1050",
+      "week": "1",
+      "category": "Network Communication",
+      "difficulty": "easy",
+      "stats": {
+        "correct": 0,
+        "wrong": 0
+      },
+      "id": "switching001"
+    },
+    {
+      "front": "Explain Circuit Switching and its characteristics.",
+      "back": "In **Circuit Switching**, a **direct connection is established from the sender to the receiver**, and resources at each node are dedicated to maintaining this connection. It's good for long-distance communication that needs to be maintained for a long period, like landline phones.\n\n**Advantages:**\n*   Dedicated path provides high reliability and speed.\n*   Data is guaranteed to arrive in the same order it was sent.\n*   No delay at intermediate nodes.\n\n**Disadvantages:**\n*   Resources reserved cannot be used for anything else during transmission, which is inefficient and expensive in high traffic networks.\n*   Time spent on the initial connection setup can be long.\n*   Connection path is blocked to other traffic during transmission.",
+      "subject": "SENG1050",
+      "week": "1",
+      "category": "Switching Methods",
+      "difficulty": "medium",
+      "stats": {
+        "correct": 0,
+        "wrong": 0
+      },
+      "id": "circsw001"
+    },
+    {
+      "front": "Explain Message Switching and its characteristics.",
+      "back": "In **Message Switching**, the **entire message is sent**, with no guarantee of delivery. Each intermediate node stores the entire message until the next node is ready (known as **store and forward**).\n\n**Advantages:**\n*   Transmission path is not blocked, allowing other devices to share the channel.\n*   Reduces network congestion, as nodes can store messages until the path to the next node is less busy.\n*   If an intermediate node fails, the message can be re-routed via a different path.\n\n**Disadvantages:**\n*   Requires much higher storage for intermediate nodes, as they must store the entire message during each transmission.\n*   Very slow, because each node must receive the entire message before forwarding it.",
+      "subject": "SENG1050",
+      "week": "1",
+      "category": "Switching Methods",
+      "difficulty": "medium",
+      "stats": {
+        "correct": 0,
+        "wrong": 0
+      },
+      "id": "msgswo01"
+    },
+    {
+      "front": "Explain Virtual-Circuit Packet Switching and its characteristics.",
+      "back": "**Virtual-Circuit Packet Switching** simulates circuit switching using packets. The message is broken into packets, and the **first packet determines the route**. Resources are reserved at each node to receive packets, but this does not block the path itself.\n\n**Advantages:**\n*   Transmission path is not blocked, allowing other devices to share the channel.\n*   Delivery is guaranteed, and packets will be received in the same order they were sent.\n*   Does not require a large amount of storage space.\n\n**Disadvantages:**\n*   Processing resources (CPU) are reserved at each intermediate node, making it inefficient on high-traffic networks.\n*   Setup time required to establish the route can be long.\n*   Requires more complex protocols for transmission.",
+      "subject": "SENG1050",
+      "week": "1",
+      "category": "Switching Methods",
+      "difficulty": "medium",
+      "stats": {
+        "correct": 0,
+        "wrong": 0
+      },
+      "id": "vrtpkt001"
+    },
+    {
+      "front": "Explain Datagram Packet Switching and its characteristics. Which switching method does the Internet use?",
+      "back": "In **Datagram Packet Switching**, a message is split into packets which are relayed, but there is **no guarantee of delivery**. Each packet is treated independently and may take different paths from source to destination.\n\n**Advantages:**\n*   No resources are blocked, which is good for high-traffic networks as multiple devices can share each path.\n*   It is cheaper to implement.\n*   If an intermediate node fails, packets can be re-routed via another path.\n\n**Disadvantages:**\n*   Packets can be lost or dropped during transmission.\n*   Packets are likely to arrive out of order, requiring an added header on each packet for correct reassembly.\n*   The message cannot be interpreted until all packets have arrived, making it inefficient for real-time communications.\n\nThe Internet uses the **datagram approach to packet switching**.",
+      "subject": "SENG1050",
+      "week": "1",
+      "category": "Switching Methods",
+      "difficulty": "medium",
+      "stats": {
+        "correct": 0,
+        "wrong": 0
+      },
+      "id": "datpkt001"
+    },
+    {
+      "front": "What is the difference between Routing and Forwarding in network communication?",
+      "back": "The Internet uses routers to connect networks.\n*   **Routing** is when a router runs a **routing algorithm to determine the route taken by packets** from the source to the destination.\n*   **Forwarding** is the process of **moving packets from a router’s input to the router’s appropriate output**. The router uses a header and a forwarding table to determine where to forward the packet.",
+      "subject": "SENG1050",
+      "week": "1",
+      "category": "Network Communication",
+      "difficulty": "easy",
+      "stats": {
+        "correct": 0,
+        "wrong": 0
+      },
+      "id": "routefwd001"
+    },
+    {
+      "front": "What happens when a router receives more packets than its connection capacity?",
+      "back": "If a router receives more packets than the capacity of its connection, a 'traffic jam' occurs. However, electrical signals are not like cars; instead of jamming, the **extra packets will be discarded by the router**. This loss must then be detected, and the packets must be resent.",
+      "subject": "SENG1050",
+      "week": "1",
+      "category": "Network Performance",
+      "difficulty": "easy",
+      "stats": {
+        "correct": 0,
+        "wrong": 0
+      },
+      "id": "overrun001"
+    },
+    {
+      "front": "What is a 'Protocol' in the context of the Internet?",
+      "back": "A **Protocol** defines a **set of rules for communication**. These rules may be implemented by hardware, software, or a combination of both. The collection of protocols driving the Internet is sometimes called the **Internet Protocol Suite**. The Internet connects incompatible networks into a single virtual network by defining these protocols.",
+      "subject": "SENG1050",
+      "week": "1",
+      "category": "Internet Protocols",
+      "difficulty": "easy",
+      "stats": {
+        "correct": 0,
+        "wrong": 0
+      },
+      "id": "protocol001"
+    },
+    {
+      "front": "Describe the function of Transmission Control Protocol (TCP).",
+      "back": "**Transmission Control Protocol (TCP)** provides **reliable communication over packet-switched networks**. It enables two computers (hosts) to establish a connection and exchange streams of data. TCP works by breaking data into packets, guarantees that the delivered packets are received in the same order they were sent, and provides control for the rate of transmission. It also specifies the maximum datagram size it can handle during connection creation.",
+      "subject": "SENG1050",
+      "week": "1",
+      "category": "Internet Protocols",
+      "difficulty": "medium",
+      "stats": {
+        "correct": 0,
+        "wrong": 0
+      },
+      "id": "tcp001"
+    },
+    {
+      "front": "How do ports function in TCP/IP communication, and which ports are reserved?",
+      "back": "Each application communicating on the network will use its own **port**. Ports 0 – 1023 are **reserved for system processes and common protocols** by IANA (Internet Assigned Numbers Authority). Examples include port 20 for FTP, 80 for HTTP, and 443 for HTTPS. User application software can use ports 1025 – 65535.",
+      "subject": "SENG1050",
+      "week": "1",
+      "category": "TCP/IP",
+      "difficulty": "easy",
+      "stats": {
+        "correct": 0,
+        "wrong": 0
+      },
+      "id": "ports001"
+    },
+    {
+      "front": "What is the Internet Protocol (IP) and its characteristics?",
+      "back": "The **Internet Protocol (IP)** is a **packet switching protocol used on the Internet**. It defines rules for how packets are routed across the Internet, including how to specify source and destination and how to get from A to B. IP sends data in individual packets (called **IP Datagrams**). It is considered **unreliable**, meaning packets might be lost, corrupted, or delivered out of order. Packets are fragmented if they are too large for a network.",
+      "subject": "SENG1050",
+      "week": "1",
+      "category": "Internet Protocols",
+      "difficulty": "medium",
+      "stats": {
+        "correct": 0,
+        "wrong": 0
+      },
+      "id": "ip001"
+    },
+    {
+      "front": "Explain what an IP address is and its structure.",
+      "back": "An **IP address** is a **32-bit identifier that uniquely and universally defines a device’s connection to the Internet**. Each host on the Internet has one. It is usually expressed as four period-separated decimal numbers, with each number being 8 bits (0-255). An IP address has two parts: an **Internet network number** and the **local number of a particular device** (server, workstation, printer, etc.) within that network. Classless Inter-Domain Routing (CIDR) is a common classless addressing method, using the format `a.b.c.d/x` where 'x' defines the number of bits in the subnet portion.",
+      "subject": "SENG1050",
+      "week": "1",
+      "category": "IP Addressing",
+      "difficulty": "easy",
+      "stats": {
+        "correct": 0,
+        "wrong": 0
+      },
+      "id": "ipadd001"
+    },
+    {
+      "front": "How does IPv6 address the issue of running out of IPv4 addresses?",
+      "back": "The issue of running out of IPv4 addresses (which provide approximately 4.29 billion unique addresses) was identified years ago. The new standard, **IPv6**, uses **128-bits to identify each device instead of 32-bits**, providing a maximum of 2^128 hosts (approximately 3.4 * 10^38 addresses). IPv4 and IPv6 can work together, and users are gradually converting to IPv6, which will soon be the default.",
+      "subject": "SENG1050",
+      "week": "1",
+      "category": "IP Addressing",
+      "difficulty": "easy",
+      "stats": {
+        "correct": 0,
+        "wrong": 0
+      },
+      "id": "ipv6001"
+    },
+    {
+      "front": "What is the purpose of the Domain Name System (DNS)?",
+      "back": "The **Domain Name System (DNS)** provides a **symbolic equivalent for numeric IP addresses**, making them human-memorable (e.g., `duckduckgo.com` instead of `20.43.111.112`). Each computer knows at least one local DNS server, which maps human-memorable domain names to numeric IP addresses. If a requested mapping is outside the local domain, the local server asks a root server, which then relays the information to the appropriate local server.",
+      "subject": "SENG1050",
+      "week": "1",
+      "category": "Internet Services",
+      "difficulty": "easy",
+      "stats": {
+        "correct": 0,
+        "wrong": 0
+      },
+      "id": "dns001"
+    },
+    {
+      "front": "How does Simple Mail Transfer Protocol (SMTP) work for email?",
+      "back": "**Simple Mail Transfer Protocol (SMTP)** is a protocol for **sending emails over the Internet**. It conforms to the TCP/IP architecture. Email systems are based on a **store-and-forward model**, where email servers accept, forward, deliver, and store messages. This means the sender and recipient don't have to be simultaneously online. However, delivery time under SMTP is **not guaranteed**.",
+      "subject": "SENG1050",
+      "week": "1",
+      "category": "Internet Services",
+      "difficulty": "easy",
+      "stats": {
+        "correct": 0,
+        "wrong": 0
+      },
+      "id": "smtp001"
+    },
+    {
+      "front": "What is HyperText Transfer Protocol (HTTP) and its relationship with the World Wide Web (WWW)?",
+      "back": "**HyperText Transfer Protocol (HTTP)** is a **set of standards allowing internet users to exchange website information**. It generally runs over TCP/IP and requests are addressed using Uniform Resource Identifiers (URIs). The **World Wide Web (WWW)**, which HTTP facilitates, came long after the Internet itself. HTTP is a core component of the WWW, serving as the protocol for accessing distributed documents.",
+      "subject": "SENG1050",
+      "week": "1",
+      "category": "Internet Services",
+      "difficulty": "easy",
+      "stats": {
+        "correct": 0,
+        "wrong": 0
+      },
+      "id": "httpwww001"
+    },
+    {
+      "front": "Describe the types of HTTP/1.x messages and common request kinds.",
+      "back": "HTTP/1.x messages are used in hypermedia systems distributed across the network and consist of **requests and responses**.\n\n**Kinds of Requests:**\n*   **GET:** Returns whatever information is requested.\n*   **POST:** Includes a body message, used for sending forms to the server.\n*   **HEAD:** Returns the Request-URI header information.\n*   Other kinds include PUT, DELETE, TRACE, OPTIONS, and PATCH.",
+      "subject": "SENG1050",
+      "week": "1",
+      "category": "HTTP",
+      "difficulty": "medium",
+      "stats": {
+        "correct": 0,
+        "wrong": 0
+      },
+      "id": "httprq001"
+    },
+    {
+      "front": "Explain the meaning of common HTTP response status codes (2xx, 3xx, 4xx, 5xx).",
+      "back": "The first line of an HTTP response is the Status-Line, including a status code.\n*   **1xx (Informational):** The request was received and understood.\n*   **2xx (Success):** The action was successfully received, understood, and accepted (e.g., 200 OK).\n*   **3xx (Redirection):** Further action must be taken to complete the request.\n*   **4xx (Client Error):** The request contains bad syntax or cannot be fulfilled (e.g., 401 Unauthorized, 403 Forbidden, 404 Not Found).\n*   **5xx (Server Error):** The server failed to fulfill an apparently valid request (e.g., 500 Internal Server Error).",
+      "subject": "SENG1050",
+      "week": "1",
+      "category": "HTTP",
+      "difficulty": "medium",
+      "stats": {
+        "correct": 0,
+        "wrong": 0
+      },
+      "id": "httpres001"
+    },
+    {
+      "front": "What are the three aspects of the World Wide Web (WWW)?",
+      "back": "The World Wide Web (WWW), initially conceived by Tim Berners-Lee, has three key aspects:\n1.  A **scheme for locating distributed documents**, specifically the **Uniform Resource Identifier (URI)** (which includes URLs or URNs).\n2.  A **protocol for accessing these documents**, which is **HTTP** (HyperText Transfer Protocol).\n3.  A **HyperText language linking the documents together**, which is **HTML** (HyperText Markup Language).",
+      "subject": "SENG1050",
+      "week": "1",
+      "category": "World Wide Web",
+      "difficulty": "easy",
+      "stats": {
+        "correct": 0,
+        "wrong": 0
+      },
+      "id": "www001"
+    },
+    {
+      "front": "What is a Uniform Resource Identifier (URI) and its two specialisations?",
+      "back": "A **Uniform Resource Identifier (URI)** is a **string that identifies a resource on the Internet by location, or name, or both**. It does not necessarily imply the availability of the identified resource.\n\nIts two specialisations are:\n1.  **Uniform Resource Locator (URL):** Represents the network location (physical address) of a resource, like a webpage or file.\n2.  **Uniform Resource Name (URN):** Uses the URN scheme (e.g., `urn:isbn:0451450523`) and identifies a resource by name, rather than location.",
+      "subject": "SENG1050",
+      "week": "2",
+      "category": "URI",
+      "difficulty": "easy",
+      "stats": {
+        "correct": 0,
+        "wrong": 0
+      },
+      "id": "uri001"
+    },
+    {
+      "front": "What is a Domain Name and its hierarchical structure?",
+      "back": "A **Domain Name** is a **unique name that locates an organisation, a website or other entity on the Internet**. Its purpose is to divide the Internet into logical groups and provide easily memorable names for internet resources (e.g., `duckduckgo.com` instead of an IP address).\n\nDomain names are **hierarchical**, ordered from right-to-left. The rightmost part is the **Top-Level Domain (TLD)**, which can be a generic top-level domain (gTLD) like `.com`, `.edu`, `.org`, or a country-code top-level domain (ccTLD) like `.au`, `.fr`, `.np`.",
+      "subject": "SENG1050",
+      "week": "2",
+      "category": "Domain Names",
+      "difficulty": "easy",
+      "stats": {
+        "correct": 0,
+        "wrong": 0
+      },
+      "id": "domname001"
+    },
+    {
+      "front": "Who are the two main audiences for a website, and why should a web designer consider both?",
+      "back": "A website typically has two main audiences:\n1.  **Humans:** As a web designer, you need to ensure humans can easily get the needed information, often in an interesting and nicely presented format.\n2.  **Spiders, bots, web-crawlers:** These Internet bots systematically browse the WWW for web indexing (to enable quicker searches). Search engines use them to update web content and indexes. Designers must ensure bots can identify and appropriately index information so people can find the website, leading to higher hit counts.",
+      "subject": "SENG1050",
+      "week": "2",
+      "category": "Web Design Principles",
+      "difficulty": "easy",
+      "stats": {
+        "correct": 0,
+        "wrong": 0
+      },
+      "id": "webad001"
+    },
+    {
+      "front": "Define HyperText and HyperMedia.",
+      "back": "*   **HyperText** is 'a body of written or pictorial material interconnected in a complex way that it could not be conveniently represented on paper. It may contain summaries or maps of its contents and their interrelations; it may contain annotations, additions, and footnotes from scholars who examined it.' – Ted Nelson. It emphasizes text.\n*   **HyperMedia** is the combination of hypertext and multimedia (such as sound, video, etc.) in an electronic document.",
+      "subject": "SENG1050",
+      "week": "2",
+      "category": "Web Concepts",
+      "difficulty": "easy",
+      "stats": {
+        "correct": 0,
+        "wrong": 0
+      },
+      "id": "hthtm001"
+    },
+    {
+      "front": "What is HyperText Markup Language (HTML) and what are its main functions?",
+      "back": "**HyperText Markup Language (HTML)** is the **file format proposed by Tim Berners-Lee to encode hypertext documents for the WWW**, and it is still used for the majority of web pages.\n\nHTML structures a web page using tags that:\n*   Suggest (but do not determine) the visual presentation of the document.\n*   Insert images and other media.\n*   Add hyperlinks taking the user from one document to another.\n*   Create forms that the user can fill in and submit back to the web server.\n*   Insert small computer programs to be run by the user’s browser.",
+      "subject": "SENG1050",
+      "week": "2",
+      "category": "HTML Basics",
+      "difficulty": "easy",
+      "stats": {
+        "correct": 0,
+        "wrong": 0
+      },
+      "id": "html001"
+    },
+    {
+      "front": "What is the current version of HTML and who maintains it?",
+      "back": "In 2019, HTML5 was replaced entirely with the **HTML 'Living Standard'**, which is the current version. This standard is primarily maintained by the **Web Hypertext Application Technology Working Group (WHATWG)**, a group of major browser vendors.",
+      "subject": "SENG1050",
+      "week": "2",
+      "category": "HTML History",
+      "difficulty": "easy",
+      "stats": {
+        "correct": 0,
+        "wrong": 0
+      },
+      "id": "htmllive001"
+    },
+    {
+      "front": "Describe the basic structure of an HTML Element and how tags are used.",
+      "back": "An **HTML document is a plain text document containing a collection of HTML elements**. An HTML element is typically identified/typed using **special markup tags**.\n\n*   Most HTML elements have **two-sided tags**, meaning they start with an opening tag and end with a closing tag, enclosing some document content (e.g., `<p> content </p>`).\n*   Some HTML elements do not have a closing tag; these are called **void elements** and usually have empty content (e.g., `<br>`, `<hr>`).",
+      "subject": "SENG1050",
+      "week": "2",
+      "category": "HTML Structure",
+      "difficulty": "easy",
+      "stats": {
+        "correct": 0,
+        "wrong": 0
+      },
+      "id": "htmlelem001"
+    },
+    {
+      "front": "What are HTML Element Attributes?",
+      "back": "**HTML Element Attributes** provide **additional information about an element**. They are always specified in the **start tag** and come in **name/value pairs**, such as `name=\"value\"` (e.g., `<meta charset=\"UTF-8\">`, `<a href=\"https://www.duckduckgo.com\">DuckDuckGo</a>`).",
+      "subject": "SENG1050",
+      "week": "2",
+      "category": "HTML Structure",
+      "difficulty": "easy",
+      "stats": {
+        "correct": 0,
+        "wrong": 0
+      },
+      "id": "htmlattr001"
+    },
+    {
+      "front": "What is the purpose of the Document Type Definition (DTD) in HTML?",
+      "back": "The purpose of the **Document Type Definition (DTD)** in HTML is to **identify the type of markup language used in the document**. It identifies the version of HTML, which browsers and code validators use for processing. It is placed at the top of the web page document (e.g., `<!DOCTYPE html>` for HTML5).",
+      "subject": "SENG1050",
+      "week": "2",
+      "category": "HTML Structure",
+      "difficulty": "easy",
+      "stats": {
+        "correct": 0,
+        "wrong": 0
+      },
+      "id": "htmlDTD001"
+    },
+    {
+      "front": "Describe the main structural tags of an HTML document: <html>, <head>, and <body>.",
+      "back": "The fundamental structure of an HTML document involves:\n*   **<html>...</html>:** This is the **root element** and marks the start and end of the entire HTML document. Everything between these tags makes up the document content.\n*   **<head>...</head>:** This section contains **information about the document** that is generally **not displayed by the browser** (e.g., title, metadata).\n*   **<body>...</body>:** This section contains the **displayed content of the document**.\n\nAn HTML document must have a single `<head>` and a single `<body>` inside the `<html>` tags.",
+      "subject": "SENG1050",
+      "week": "2",
+      "category": "HTML Document Structure",
+      "difficulty": "easy",
+      "stats": {
+        "correct": 0,
+        "wrong": 0
+      },
+      "id": "htmlstruct001"
+    },
+    {
+      "front": "What are the roles of the <title> and <meta> tags within the <head> section of an HTML document?",
+      "back": "Within the `<head>` section:\n*   **<title>...</title>:** This tag defines the **title of the document**. It is often displayed in the browser tab, provides a title for the page when added to favourites, and displays a title for the page in search-engine results. It is distinct from a heading.\n*   **<meta>:** This tag provides **metadata about the HTML document**. Metadata is not displayed on the page but is machine parsable. It's typically used to specify page description, keywords, author, last modified timestamp, and character encoding (e.g., `charset=\"UTF-8\"`).",
+      "subject": "SENG1050",
+      "week": "2",
+      "category": "HTML Document Structure",
+      "difficulty": "easy",
+      "stats": {
+        "correct": 0,
+        "wrong": 0
+      },
+      "id": "titlemeta001"
+    },
+    {
+      "front": "Why are HTML heading tags (<h1> to <h6>) important, and how should they be used?",
+      "back": "HTML headings are titles or subtitles. They are important because:\n*   **Search engines** use headings to **index the structure and content** of the webpage, as well as to rank documents.\n*   They help **show the document structure to users**.\n\nHeadings are defined with `<h1>` (most important) to `<h6>` (least important) tags. It's crucial to **use HTML heading tags for headings only, not for formatting purposes**, and avoid spamming the document with too many headings, as search engines dislike this.",
+      "subject": "SENG1050",
+      "week": "2",
+      "category": "HTML Tags",
+      "difficulty": "easy",
+      "stats": {
+        "correct": 0,
+        "wrong": 0
+      },
+      "id": "h1h6001"
+    },
+    {
+      "front": "What is the difference between <p> and <blockquote> tags?",
+      "back": "*   **<p>...</p>:** Defines a **paragraph of text**. It has no special default formatting, but forgetting the closing `</p>` tag can cause the start of the next block-level element to automatically imply it, so explicit closing is recommended.\n*   **<blockquote>...</blockquote>:** Defines a **block of text quoted from someone/somewhere else**. By default, it is formatted as an indented block of text. It can include a `cite` attribute to specify the source of the quotation, but it should not be used solely for indenting text.",
+      "subject": "SENG1050",
+      "week": "2",
+      "category": "HTML Tags",
+      "difficulty": "easy",
+      "stats": {
+        "correct": 0,
+        "wrong": 0
+      },
+      "id": "pblock001"
+    },
+    {
+      "front": "What are the <address> and <div> tags used for?",
+      "back": "*   **<address>...</address>:** Used to provide **contact information for the author/owner of a document or an article**. It's usually rendered in italics by default, with line breaks before and after. If inside `<body>`, it's for the document; if inside `<article>`, it's for that article.\n*   **<div>...</div>:** A **generic division or section** in an HTML document. It has no special formatting by default and is primarily used to **group tags together** to apply formatting (e.g., with CSS) or to group other flow content elements.",
+      "subject": "SENG1050",
+      "week": "2",
+      "category": "HTML Tags",
+      "difficulty": "easy",
+      "stats": {
+        "correct": 0,
+        "wrong": 0
+      },
+      "id": "addrdiv001"
+    },
+    {
+      "front": "What are <br> and <hr> tags, and why are they considered 'void elements'?",
+      "back": "*   **<br>:** Goes to the **next line** before displaying the next element or text. It should be used for line breaks, not to separate paragraphs.\n*   **<hr>:** Draws a **horizontal rule** between blocks to visually separate areas.\n\nBoth are **void elements** because they **do not have a closing tag and thus contain no content**. With the latest HTML, prefer `<br>` and `<hr>` over self-closing formats like `<br />` or `<hr />`.",
+      "subject": "SENG1050",
+      "week": "2",
+      "category": "HTML Tags",
+      "difficulty": "easy",
+      "stats": {
+        "correct": 0,
+        "wrong": 0
+      },
+      "id": "brhr001"
+    },
+    {
+      "front": "Explain 'Phrasing Content' in HTML.",
+      "back": "**Phrasing content** refers to HTML elements that primarily **markup the content within paragraphs and individual phrases of the document**. These elements are usually displayed by browsers as **inline elements**, meaning they are displayed without starting a new line (e.g., hyperlinks, emphases, images). Most phrasing content cannot contain other HTML elements that are not also phrasing content.",
+      "subject": "SENG1050",
+      "week": "2",
+      "category": "HTML Content Types",
+      "difficulty": "easy",
+      "stats": {
+        "correct": 0,
+        "wrong": 0
+      },
+      "id": "phrscont001"
+    },
+    {
+      "front": "What is the semantic difference between <strong>/<em> and <b>/<i> tags?",
+      "back": "*   **<strong>...</strong>:** Indicates that the enclosed text is **important**. It is displayed in bold by default.\n*   **<em>...</em>:** Indicates that the enclosed text should be **emphasised**. It is displayed italicised by default.\n\n*   **<b>...</b>:** Makes the enclosed text bold, semantically meaning 'bring attention to'.\n*   **<i>...</i>:** Makes the enclosed text italics, semantically indicating idiomatic text (e.g., technical terms or an alternative voice).\n\nWhile `<b>` and `<i>` may look the same as `<strong>` and `<em>` to humans, they are **not semantically the same to spiders/bots**. It is recommended to use `<strong>` for importance and `<em>` for emphasis, and `<b>` and `<i>` only as a last resort when other options are not appropriate.",
+      "subject": "SENG1050",
+      "week": "2",
+      "category": "HTML Semantic Tags",
+      "difficulty": "medium",
+      "stats": {
+        "correct": 0,
+        "wrong": 0
+      },
+      "id": "semtags001"
+    },
+    {
+      "front": "Describe the purpose of <mark>, <code>, <samp>, <kbd>, and <var> tags.",
+      "back": "*   **<mark>...</mark>:** Indicates text that is of **particular relevance to the user** (e.g., search terms), displayed highlighted by default.\n*   **<code>...</code>:** Used for a **piece of computer code**.\n*   **<samp>...</samp>:** Represents a **sample of (program) output**.\n*   **<kbd>...</kbd>:** Used for **input that would be typed on a keyboard**.\n*   **<var>...</var>:** Indicates that the enclosed text is a **variable in a programming context**.\n\nThese tags apply a specific type of text content and act as semantical text identifiers in HTML5, adding information about the text type.",
+      "subject": "SENG1050",
+      "week": "2",
+      "category": "HTML Semantic Tags",
+      "difficulty": "medium",
+      "stats": {
+        "correct": 0,
+        "wrong": 0
+      },
+      "id": "codesamp001"
+    },
+    {
+      "front": "What are <cite>, <q>, <dfn>, and <abbr> tags used for?",
+      "back": "*   **<cite>...</cite>:** Indicates that the enclosed text is the **title of a work**. Often used with a quotation or as a reference.\n*   **<q cite=\" \">...</q>:** Used for a **short quotation from another source**. The `cite` attribute provides the URI of the source. This is a phrasing element, distinct from `<blockquote>`.\n*   **<dfn>...</dfn>:** The enclosed text is a **definition term**. The nearest tag to `<dfn>` must contain its definition/explanation.\n*   **<abbr>...</abbr>:** Indicates that the enclosed text is an **abbreviation or an acronym**. This provides useful information to browsers, spell checkers, translation systems, and search engine indexers.",
+      "subject": "SENG1050",
+      "week": "2",
+      "category": "HTML Semantic Tags",
+      "difficulty": "medium",
+      "stats": {
+        "correct": 0,
+        "wrong": 0
+      },
+      "id": "citedfn001"
+    },
+    {
+      "front": "Explain the purpose of the <span> tag.",
+      "back": "The **<span>...</span>** tag is used for **generic grouping of inline text**, primarily to apply formatting (e.g., with CSS). It does not start a new block of text, similar to how `<div>` groups block content. By itself, it provides **no visual change**. Its main utility is to provide a **'hook' to a part of a text or document** so it can be styled with CSS or manipulated with JavaScript.",
+      "subject": "SENG1050",
+      "week": "2",
+      "category": "HTML Tags",
+      "difficulty": "easy",
+      "stats": {
+        "correct": 0,
+        "wrong": 0
+      },
+      "id": "span001"
+    },
+    {
+      "front": "How do HTML tags create lists, and what attributes can be used with ordered lists?",
+      "back": "HTML uses special block tags to create lists:\n*   **<ul>...</ul>:** Creates an **unordered list** of items.\n*   **<ol>...</ol>:** Creates an **ordered list** of items.\n*   **<li>...</li>:** Represents an **individual item** in both unordered and ordered lists.\n\nFor ordered lists (`<ol>`), attributes include:\n*   `start=number`: Specifies the starting value of the list.\n*   `type={1, A, a, I, i}`: Specifies the kind of marker used (e.g., numbers, uppercase letters, Roman numerals).\n*   `reversed`: Specifies that the list order should be descending.\n\nFor list items (`<li>`) within an ordered list, `value=number` can specify the value of a particular item, with subsequent items incrementing from that number.",
+      "subject": "SENG1050",
+      "week": "2",
+      "category": "HTML Lists",
+      "difficulty": "medium",
+      "stats": {
+        "correct": 0,
+        "wrong": 0
+      },
+      "id": "htmllist001"
+    },
+    {
+      "front": "Explain how description lists are created in HTML using <dl>, <dt>, and <dd> tags.",
+      "back": "Description lists are created using the **<dl>...</dl>** tag, which serves as a container for the list. Within a description list:\n*   **<dt>...</dt>:** Is used to indicate a **term/name to be defined**. Note that `<dt>` cannot contain heading or sectioning content.\n*   **<dd>...</dd>:** Is used to **describe a term**. `<li>` and `<dd>` can contain both inline and block tags, allowing for nested lists.",
+      "subject": "SENG1050",
+      "week": "2",
+      "category": "HTML Lists",
+      "difficulty": "easy",
+      "stats": {
+        "correct": 0,
+        "wrong": 0
+      },
+      "id": "htmldl001"
+    },
+    {
+      "front": "How are hyperlinks created using the <a> tag, and what is its primary attribute?",
+      "back": "Hyperlinks are created using the **<a>...</a>** tag, also known as an **anchor**. Its primary attribute is **`href=\"uri\"`**, which specifies the URI of the document to link to. When the link (the enclosed content) is activated in the browser, the linked document is requested and displayed. The `<a>` tag is an interactive content element.",
+      "subject": "SENG1050",
+      "week": "2",
+      "category": "HTML Links",
+      "difficulty": "easy",
+      "stats": {
+        "correct": 0,
+        "wrong": 0
+      },
+      "id": "atag001"
+    },
+    {
+      "front": "What is the difference between an Absolute URL and a Relative URL, and when should each be used?",
+      "back": "*   An **Absolute URL** provides **enough information to access the document from any other document**, specifying at least the protocol, host, and path (e.g., `http://compseng.newcastle.edu.au/abc123/research.html`).\n*   A **Relative URL** provides **only enough information if the context of the current document is used**. The protocol/host default to the same as the current document, and paths without a leading `/` are relative to the current path (e.g., `research.html` or `../index.html`).\n\n**Recommendations:** Use **relative URLs** if the document you are linking to is **part of your website**. Only use **absolute URLs** if the document is part of a **different website** (on a different server or controlled by someone else). Using relative URLs allows for easier website portability.",
+      "subject": "SENG1050",
+      "week": "2",
+      "category": "HTML Links",
+      "difficulty": "medium",
+      "stats": {
+        "correct": 0,
+        "wrong": 0
+      },
+      "id": "urltypes001"
+    },
+    {
+      "front": "How do you link to specific identifiers within an HTML document?",
+      "back": "To link to a specific part of a document, a URL can include a hash (`#`) followed by an identifier (e.g., `/jfr457/research/index.html#gd`). This requires a matching `id` attribute on an HTML tag within the target document (e.g., `<h2 id=\"about\">About Us</h2>`). Almost every HTML tag allows the `id` attribute, but each `id` **must be unique within the document**. If no matching `id` is found, the browser might point to the top or bottom of the document, or a previously loaded position.",
+      "subject": "SENG1050",
+      "week": "2",
+      "category": "HTML Links",
+      "difficulty": "easy",
+      "stats": {
+        "correct": 0,
+        "wrong": 0
+      },
+      "id": "linkid001"
+    },
+    {
+      "front": "What is the <img> tag used for, and what are its required attributes?",
+      "back": "The **<img> tag** is used to **load an image file from a URI and insert it into the document** at that point. It is a phrasing content element.\n\nIts **required attributes** are:\n*   **`src=\"uri\"`**: Specifies the URI (source) of the image file.\n*   **`alt=\"text\"`**: Provides **alternative text** that is displayed if the image cannot be loaded or displayed. This is also crucial for accessibility.\n\nOther common attributes include `height` and `width` to specify dimensions, which helps browsers reserve space during page load.",
+      "subject": "SENG1050",
+      "week": "2",
+      "category": "HTML Images",
+      "difficulty": "easy",
+      "stats": {
+        "correct": 0,
+        "wrong": 0
+      },
+      "id": "imgtag001"
+    },
+    {
+      "front": "Why is it important to set `width` and `height` attributes for images in HTML?",
+      "back": "It is important to **always set both the `width` and `height` attributes** for images in HTML because this causes the **browser to reserve the required space during page load**. This prevents the page layout from suddenly changing or 'jumping' when the image eventually loads, providing a more stable and user-friendly experience.",
+      "subject": "SENG1050",
+      "week": "2",
+      "category": "HTML Images",
+      "difficulty": "easy",
+      "stats": {
+        "correct": 0,
+        "wrong": 0
+      },
+      "id": "imgwh001"
+    },
+    {
+      "front": "How are special characters handled in HTML, and which characters must be escaped?",
+      "back": "HTML can display the full range of Unicode characters, using either `&#number;` (for a given Unicode number) or `&name;` (for a 'named' character like `&eacute;` for 'é').\n\nIt is **crucial to use character entities** for the following characters instead of their literal symbols, as they have special meaning in HTML:\n*   `&` (ampersand) must be written as **`&amp;`**\n*   `<` (less than) must be written as **`&lt;`**\n*   `>` (greater than) must be written as **`&gt;`**",
+      "subject": "SENG1050",
+      "week": "2",
+      "category": "HTML Syntax",
+      "difficulty": "easy",
+      "stats": {
+        "correct": 0,
+        "wrong": 0
+      },
+      "id": "htmlchar001"
+    },
+    {
+      "front": "How do HTML comments work, and what is their purpose?",
+      "back": "HTML comments are enclosed between `<!--` and `-->` (e.g., `<!-- comment text -->`). **Any text within these tags is ignored by the browser**.\n\nTheir purpose is to:\n*   **Embed notes** for yourself and other web developers in your web pages.\n*   **Clarify author's intent** when the code is not immediately clear.\n*   They can also be used to embed metadata, though other methods exist for this.",
+      "subject": "SENG1050",
+      "week": "2",
+      "category": "HTML Syntax",
+      "difficulty": "easy",
+      "stats": {
+        "correct": 0,
+        "wrong": 0
+      },
+      "id": "htmlcomm001"
+    },
+    {
+      "front": "Explain the difference between Block Display and Inline Display for HTML elements.",
+      "back": "HTML elements are rendered by browsers in different ways, primarily as block or inline display:\n*   **Block Display:** Elements displayed in block format normally **start (and end) with a new line**. Most HTML elements (except phrasing content) are displayed this way, such as paragraphs, headings, lists, and tables.\n*   **Inline Display:** Elements displayed in inline format are normally displayed **without starting a new line**. Most phrasing content is displayed this way, including hyperlinks, emphases, and inline images.",
+      "subject": "SENG1050",
+      "week": "2",
+      "category": "HTML Element Display",
+      "difficulty": "easy",
+      "stats": {
+        "correct": 0,
+        "wrong": 0
+      },
+      "id": "htmldisp001"
+    },
+    {
+      "front": "Why is HTML validation important, and what happens if HTML is invalid?",
+      "back": "**HTML validation is crucial** because it checks your pages to ensure they conform to web standards. Just because a page looks right on your browser doesn’t mean it is valid.\n\nIf there is a mistake in your HTML:\n*   Some browsers may **refuse to display the page**.\n*   Some may report that the page is invalid but still try to display it.\n*   Some browsers will try to **guess what you intend to display**.\n\nFor assignments, all HTML must validate; failure to do so can result in significant mark loss, even if the page displays. Tools like `validator.w3.org` can be used.",
+      "subject": "SENG1050",
+      "week": "2",
+      "category": "HTML Best Practices",
+      "difficulty": "easy",
+      "stats": {
+        "correct": 0,
+        "wrong": 0
+      },
+      "id": "htmlval001"
+    },
+    {
+      "front": "What problems arise from HTML mixing structure and data, and what is the solution?",
+      "back": "HTML, by itself, mixes the **structure of the webpage and the data** together. This creates two main problems:\n1.  **Inefficiency in data updates:** If data ever changes (e.g., product categories on a shopping site), every single HTML file using that data would have to be updated, which is inefficient and time-consuming.\n2.  **Inconsistent visual styling:** HTML is only intended to specify structure and semantics, but browsers may visualize elements differently. There's no explicit way to specify visual characteristics to ensure consistency across all browsers.\n\nThe solution for the first problem (separating structure from data) is **Extensible Markup Language (XML)**, which we will learn today. The solution for the second problem (explicitly specifying visual characteristics) is **Cascading Style Sheets (CSS)**.",
+      "subject": "SENG1050",
+      "week": "3",
+      "category": "Web Development Problems",
+      "difficulty": "easy",
+      "stats": {
+        "correct": 0,
+        "wrong": 0
+      },
+      "id": "htmlprob001"
+    },
+    {
+      "front": "When is XML a better choice than a database for data management?",
+      "back": "While databases are often used for large, frequently changing data with multi-user access control, **XML still has many use cases** and can be a better choice for certain scenarios:\n*   **Transmitting data:** XML is generally better for transmitting data, as database files can be much larger and take longer to send over a network.\n*   **Small amounts of data:** For small datasets, XML is typically faster to access due to no database overhead (e.g., SQL queries).\n*   **Disk space:** XML uses considerably less disk space than an equivalent database.\n*   **Management complexity:** XML involves less complex management than databases, which require server resources, multi-user access control, and regular maintenance.",
+      "subject": "SENG1050",
+      "week": "3",
+      "category": "XML vs Database",
+      "difficulty": "medium",
+      "stats": {
+        "correct": 0,
+        "wrong": 0
+      },
+      "id": "xmlvsdb001"
+    },
+    {
+      "front": "What is Extensible Markup Language (XML)?",
+      "back": "**Extensible Markup Language (XML)** is a **standard set of design rules to make data readable by both humans and computers**. A document that follows these rules is called an XML Document or an XML Application. It is 'eXtensible' because the user has full control over the data, context, and patterns used, allowing for any user-defined data and structure. XML is **self-describing** and provides meaningful semantics (context) for data, making it suitable for platform-independent data exchange.",
+      "subject": "SENG1050",
+      "week": "3",
+      "category": "XML Basics",
+      "difficulty": "easy",
+      "stats": {
+        "correct": 0,
+        "wrong": 0
+      },
+      "id": "xml001"
+    },
+    {
+      "front": "Name the key members of the XML Family and their roles.",
+      "back": "The XML Family includes:\n*   **XML (eXtensible Markup Language):** Provides a **syntax for arbitrary semantic tags**.\n*   **DTD (Document Type Definition):** **Defines the structure (pattern)** of a valid XML document.\n*   **XSLT (eXtensible Stylesheet Language Transformations):** An XML document that describes how to **transform another XML document into a different format** (not covered in SENG1050).",
+      "subject": "SENG1050",
+      "week": "3",
+      "category": "XML Family",
+      "difficulty": "easy",
+      "stats": {
+        "correct": 0,
+        "wrong": 0
+      },
+      "id": "xmlfam001"
+    },
+    {
+      "front": "What is the purpose and placement of the XML Declaration?",
+      "back": "The **XML Declaration** (`<?xml version=\"1.0\" encoding=\"utf-8\"?>`) is used to **tell the computer that the file should be read as XML** and defines the encoding used. It **must be situated at the first position of the first line** in the XML document, before any comments or newline characters, otherwise it will not work correctly. The XML declaration itself is not part of the XML document and has no closing tag.",
+      "subject": "SENG1050",
+      "week": "3",
+      "category": "XML Structure",
+      "difficulty": "easy",
+      "stats": {
+        "correct": 0,
+        "wrong": 0
+      },
+      "id": "xmldec001"
+    },
+    {
+      "front": "How is XML fundamentally different from HTML?",
+      "back": "XML and HTML were designed with different goals:\n*   **XML** was designed to **transport and store data**, with a focus on **what data is** (content).\n*   **HTML** was designed to **display data**, with a focus on **how data is structured** (format).\n\nEssentially, XML is about the **content**, while HTML is about the **format**. XML is not a replacement for HTML but complements it. Another key difference is that **XML is case-sensitive**, whereas HTML is case-insensitive.",
+      "subject": "SENG1050",
+      "week": "3",
+      "category": "XML vs HTML",
+      "difficulty": "easy",
+      "stats": {
+        "correct": 0,
+        "wrong": 0
+      },
+      "id": "xmlvhtml001"
+    },
+    {
+      "front": "Describe the rules for XML element tags and attributes.",
+      "back": "**XML Element Tags**:\n*   Can be an **opening and closing tag** (e.g., `<tag> contents </tag>`) or a **single tag** (e.g., `<tag />` for empty content).\n*   Tags are **case sensitive** (`<name>` is not the same as `<Name>`).\n*   Tags must be **correctly nested** (opened and closed in the correct order).\n*   All XML elements must have a closing tag; empty elements can be `<sample></sample>` or `<sample />`.\n\n**XML Element Attributes**:\n*   Optional, single-word pieces of information that **describe a property of the tag**.\n*   Tags can have as many attributes as desired, but **all attributes must have an associated value given inside quotes** (e.g., `<tag attribute=\"value\">`).\n\n**Tag Names Rules**:\n*   Must start with a letter or `_` character.\n*   Can only contain letters, digits, `_`, `-`, or `.`.",
+      "subject": "SENG1050",
+      "week": "3",
+      "category": "XML Structure",
+      "difficulty": "medium",
+      "stats": {
+        "correct": 0,
+        "wrong": 0
+      },
+      "id": "xmltagsattr001"
+    },
+    {
+      "front": "What is the 'Root Tag' in an XML document?",
+      "back": "The **Root Tag** is the **single container tag** that must enclose all other tags and data within an XML document (except for the XML declaration itself). It forms the base of the hierarchical XML tree structure.",
+      "subject": "SENG1050",
+      "week": "3",
+      "category": "XML Structure",
+      "difficulty": "easy",
+      "stats": {
+        "correct": 0,
+        "wrong": 0
+      },
+      "id": "xmlroot001"
+    },
+    {
+      "front": "How do XML comments work?",
+      "back": "XML applications can contain comments enclosed between `<!--` and `-->` (e.g., `<!-- remember to fix this -->`). These comments are **ignored by the application software** and possibly discarded by the XML Parser. They are used for notes within the document.",
+      "subject": "SENG1050",
+      "week": "3",
+      "category": "XML Syntax",
+      "difficulty": "easy",
+      "stats": {
+        "correct": 0,
+        "wrong": 0
+      },
+      "id": "xmlcomm001"
+    },
+    {
+      "front": "What is an XML Parser, and how do browsers handle XML documents?",
+      "back": "In computing, an **XML Parser** is a program or piece of code that **analyses XML files to identify their component parts**. Most browsers include a built-in XML parser, but XML files are **not displayed as HTML pages**. If there are no syntax errors, the XML document will be displayed, and most browsers allow you to collapse or expand the element structure. The parser distinguishes between **Parsed Character Data (PCDATA)**, which are treated as code parts, and **Unparsed Data (CDATA)**, which is ignored by the parser.",
+      "subject": "SENG1050",
+      "week": "3",
+      "category": "XML Processing",
+      "difficulty": "easy",
+      "stats": {
+        "correct": 0,
+        "wrong": 0
+      },
+      "id": "xmlparser001"
+    },
+    {
+      "front": "Differentiate between Parsed Character Data (PCDATA) and Unparsed Data (CDATA) in XML.",
+      "back": "*   **Parsed Character Data (PCDATA)** consists of all those characters that XML treats as **parts of the code of an XML document**. This includes the XML declaration, opening/closing tags, empty element tags, character/entity references, comments, and processing instructions. The XML parser processes these elements.\n*   **Unparsed Data (CDATA)** refers to text data that **should not be parsed by the XML parser**. Everything inside a CDATA section (`<![CDATA[ raw text ]]>`) is ignored by the parser, preventing syntax errors from characters like `&` and `<` if they are part of raw text (e.g., code snippets).",
+      "subject": "SENG1050",
+      "week": "3",
+      "category": "XML Data Types",
+      "difficulty": "medium",
+      "stats": {
+        "correct": 0,
+        "wrong": 0
+      },
+      "id": "pcdata001"
+    },
+    {
+      "front": "What is an XML Tree and its basic rules?",
+      "back": "Conceptually, an **XML document is a hierarchical structure called an XML tree**, consisting of nodes of various kinds arranged as a tree. It's a way to visualise the XML structure.\n\nThe basic rules are:\n*   All elements must be nested within a **single document or root tag**.\n*   There can only be **one root tag**.",
+      "subject": "SENG1050",
+      "week": "3",
+      "category": "XML Structure",
+      "difficulty": "easy",
+      "stats": {
+        "correct": 0,
+        "wrong": 0
+      },
+      "id": "xmltree001"
+    },
+    {
+      "front": "What is a Document Type Definition (DTD) and what does it describe?",
+      "back": "A **Document Type Definition (DTD)** defines the **structure (pattern) of a valid XML document** and includes a list of legal elements and attributes. Its primary purpose is to define the legal building blocks for an XML document.\n\nA DTD describes:\n*   Which tags are valid in an XML document.\n*   Which tags can be nested inside which tags.\n*   Which attributes are valid for which tags.",
+      "subject": "SENG1050",
+      "week": "3",
+      "category": "DTD",
+      "difficulty": "easy",
+      "stats": {
+        "correct": 0,
+        "wrong": 0
+      },
+      "id": "dtd001"
+    },
+    {
+      "front": "What are the two types of DTDs, and how are XML documents linked to them?",
+      "back": "DTDs can be divided into two types:\n*   **Internal DTD:** The declarations are placed in the **same file as the document content**.\n*   **External DTD:** The DTD is located in a **separate file**.\n\nXML documents are linked to DTDs using the `<!DOCTYPE>` declaration:\n*   **Internal DTD:** `<!DOCTYPE root_tag [ DTD_rules ]>`\n*   **External DTD:** `<!DOCTYPE root_tag SYSTEM \"file\">`",
+      "subject": "SENG1050",
+      "week": "3",
+      "category": "DTD",
+      "difficulty": "easy",
+      "stats": {
+        "correct": 0,
+        "wrong": 0
+      },
+      "id": "dtdtypes001"
+    },
+    {
+      "front": "How are XML elements declared in a DTD using `<!ELEMENT>`?",
+      "back": "XML elements are declared in a DTD using `<!ELEMENT element-name category>` or `<!ELEMENT element-name (children)>`.\n\nCommon declarations include:\n*   **`EMPTY`:** For empty elements (e.g., `<!ELEMENT img EMPTY>`).\n*   **`(#PCDATA)`:** For elements containing only parsed character data (e.g., `<!ELEMENT departureTime (#PCDATA)>`).\n*   **`ANY`:** For elements that can contain any combination of parsable data (e.g., `<!ELEMENT departureTime ANY>`).\n*   **(children):** For elements containing specific child tags. Commas (`,`) separate items in a sequence (e.g., `<!ELEMENT family (mother,father,child)>`), while vertical bars (`|`) separate choices (e.g., `<!ELEMENT foo (bar|foobar|baz)>`). Children must appear in the same order as declared in a sequence.",
+      "subject": "SENG1050",
+      "week": "3",
+      "category": "DTD Syntax",
+      "difficulty": "medium",
+      "stats": {
+        "correct": 0,
+        "wrong": 0
+      },
+      "id": "dtdelem001"
+    },
+    {
+      "front": "What modifiers can be used with child elements in DTD declarations?",
+      "back": "Child elements in DTD declarations can have optional modifiers to specify their occurrence:\n*   **`child`**: One and only one such child is allowed.\n*   **`child+`**: One or more such children are allowed.\n*   **`child*`**: Zero or more such children are allowed.\n*   **`child?`**: Zero or one such child is allowed.\n\n**Mixed content** (text combined with elements) can be declared as `(#PCDATA| child2 | ... | childn)*`.",
+      "subject": "SENG1050",
+      "week": "3",
+      "category": "DTD Syntax",
+      "difficulty": "medium",
+      "stats": {
+        "correct": 0,
+        "wrong": 0
+      },
+      "id": "dtdmod001"
+    },
+    {
+      "front": "How are XML element attributes declared in a DTD using `<!ATTLIST>`, and what are common `attribute-type` values?",
+      "back": "XML element attributes are declared in a DTD using `<!ATTLIST element-name attribute-name attribute-type default-value>`.\n\nCommon `attribute-type` values include:\n*   **`CDATA`**: The value is character data.\n*   **`(en1|en2|..)`**: The value must be one of the listed enumerated values.\n*   **`ID`**: The value is a unique identifier.",
+      "subject": "SENG1050",
+      "week": "3",
+      "category": "DTD Syntax",
+      "difficulty": "medium",
+      "stats": {
+        "correct": 0,
+        "wrong": 0
+      },
+      "id": "dtdattr001"
+    },
+    {
+      "front": "Explain the different `default-value` options for attributes in DTD.",
+      "back": "For attributes in a DTD, the `default-value` option specifies how the attribute behaves if not explicitly provided in the XML document:\n*   **`value`**: The specified value is the **default value** if not provided (e.g., `<!ATTLIST circle radius CDATA \"0\">`).\n*   **`#FIXED value`**: The attribute's value **cannot be changed by the tag**; if a different value is given, the parser will return an error (e.g., `<!ATTLIST sender company CDATA #FIXED \"Microsoft\">`).\n*   **`#REQUIRED`**: The attribute **must always be supplied by the tag**; if missing, it's an error (e.g., `<!ATTLIST person number CDATA #REQUIRED>`).\n*   **`#IMPLIED`**: There is no default value, and the attribute **doesn't have to be supplied by the tag**; if missing, it's not an error (e.g., `<!ATTLIST contact fax CDATA #IMPLIED>`).",
+      "subject": "SENG1050",
+      "week": "3",
+      "category": "DTD Syntax",
+      "difficulty": "hard",
+      "stats": {
+        "correct": 0,
+        "wrong": 0
+      },
+      "id": "dtddefval001"
+    },
+    {
+      "front": "What are XML Entities in DTD, and how are they defined and referenced?",
+      "back": "**Entities** in DTD are **variables used to define shortcuts to standard text or special characters**. Besides XML predefined entities (`&gt;`, `&lt;`, `&amp;`, `&quot;`, `&apos;`), custom entities can be defined in a DTD.\n\n*   An entity is defined using `<!ENTITY name \"value\">`, which creates a new character entity `&name;` (e.g., `<!ENTITY MBL25 \"Monarch Butterfly, 6-12 larvae\">`).\n*   After declaration, an entity can be **referenced anywhere within the XML document** using `&name;` (e.g., `<item>&MBL25;</item>`), which is interpreted as its defined value.",
+      "subject": "SENG1050",
+      "week": "3",
+      "category": "DTD Syntax",
+      "difficulty": "medium",
+      "stats": {
+        "correct": 0,
+        "wrong": 0
+      },
+      "id": "dtdentity001"
+    },
+    {
+      "front": "Distinguish between a 'well-formed' and a 'valid' XML document.",
+      "back": "*   A document is **well-formed XML** if it-and-only-if:\n    *   Its syntax conforms to the XML specification.\n    *   Its tags form a hierarchical tree, with a single root node.\n*   A document is **valid XML** if it-and-only-if:\n    *   It is well-formed, and.\n    *   It conforms to an associated DTD.\n\nTools like `xmlvalidation.com` can be used for validation.",
+      "subject": "SENG1050",
+      "week": "3",
+      "category": "XML Validation",
+      "difficulty": "medium",
+      "stats": {
+        "correct": 0,
+        "wrong": 0
+      },
+      "id": "xmlval001"
+    },
+    {
+      "front": "What are the advantages of using Cascading Style Sheets (CSS)?",
+      "back": "**Cascading Style Sheets (CSS)** provide a way to add visual formatting to HTML tags, independently of their semantics. Its advantages include:\n*   **Greater control over page layout and typography**.\n*   **Separation of style from structure**.\n*   **Style can be stored separately**, which saves work when changing many pages.\n*   Potentially results in **smaller documents**.\n*   Makes **site maintenance easier**.",
+      "subject": "SENG1050",
+      "week": "4",
+      "category": "CSS Basics",
+      "difficulty": "easy",
+      "stats": {
+        "correct": 0,
+        "wrong": 0
+      },
+      "id": "cssadv001"
+    },
+    {
+      "front": "Describe the three main ways CSS can be applied to HTML.",
+      "back": "CSS can be applied to HTML in three main ways:\n1.  **Inline styles:** Applied directly to an individual HTML tag using the `style` attribute (e.g., `<h1 style=\"color:red\">...</h1>`). The style applies to the content of the tag and nested tags.\n2.  **Embedded (Document-level) styles:** Defined within a `<style>` tag inside the `<head>` section of an HTML document. These styles apply to all matching tags in the current document (e.g., `<head><style>h1 {color: blue;}</style></head>`).\n3.  **External style files:** CSS rules are stored in a separate `.css` file and linked to the HTML document using a `<link>` tag in the `<head>` section (e.g., `<link rel=\"stylesheet\" type=\"text/css\" href=\"uri\" />`). This file contains only rules, with comments in `/* ... */` format.",
+      "subject": "SENG1050",
+      "week": "4",
+      "category": "CSS Application",
+      "difficulty": "medium",
+      "stats": {
+        "correct": 0,
+        "wrong": 0
+      },
+      "id": "csstypes001"
+    },
+    {
+      "front": "Explain the CSS Cascading Order.",
+      "back": "The **CSS Cascading Order** determines which styles are applied when multiple rules conflict, with higher priority overriding lower priority. The general order, from lowest to highest priority, is:\n1.  **Browser's internal style sheet** (default styles).\n2.  **Embedded and external styles** (applied in order; the last style applied takes precedence).\n3.  **Inline styles** (have the highest priority among these).\n4.  **User-defined styles** (can override inline styles).\n\nThis means inline style rules generally have the highest priority, except for user-defined browser instructions.",
+      "subject": "SENG1050",
+      "week": "4",
+      "category": "CSS Basics",
+      "difficulty": "medium",
+      "stats": {
+        "correct": 0,
+        "wrong": 0
+      },
+      "id": "csscascade001"
+    },
+    {
+      "front": "What are some drawbacks of using CSS?",
+      "back": "While CSS offers many advantages, it also has some drawbacks:\n*   CSS is **only a suggestion to the browser**; it might be ignored.\n*   **Not every property applies to every tag**.\n*   **Not every browser supports every property**, or every value for a property.\n*   Users can **override any or all CSS rules at the browser level**.",
+      "subject": "SENG1050",
+      "week": "4",
+      "category": "CSS Limitations",
+      "difficulty": "easy",
+      "stats": {
+        "correct": 0,
+        "wrong": 0
+      },
+      "id": "cssdraw001"
+    },
+    {
+      "front": "Why is CSS validation important, and what tools can be used?",
+      "back": "**CSS validation is important** because mistakes in CSS code can be hard to detect, and many browsers will stop processing a CSS rule or even an entire style if an error is found. Also, your CSS might be correct but not supported by the browser.\n\nIt's recommended to use a **CSS validator** tool, such as **`jigsaw.w3.org/css-validator/`**. Note that CSS validation may fail if the associated HTML is invalid. For assignments, all CSS must validate.",
+      "subject": "SENG1050",
+      "week": "4",
+      "category": "CSS Best Practices",
+      "difficulty": "easy",
+      "stats": {
+        "correct": 0,
+        "wrong": 0
+      },
+      "id": "cssval001"
+    },
+    {
+      "front": "List several types of CSS selectors.",
+      "back": "CSS selectors determine which HTML tags a style applies to. Types of selectors include:\n*   **Tag name:** `p { ... }`\n*   **Multiple tags:** `p, blockquote { ... }`\n*   **Descendant tag:** `div p { ... }` (a `p` inside a `div`)\n*   **Immediate child tag:** `div > p { ... }` (a `p` directly inside a `div`)\n*   **Immediately following tag:** `div + p { ... }` (a `p` immediately after a `div`)\n*   **Following tag (any):** `div ~ p { ... }` (a `p` anywhere after a `div`)\n*   **(Pseudo-)selectors for user actions:** `a:link`, `a:visited`, `a:active`, `a:hover`.\n*   **Tag with a given attribute:** `input[checked] { ... }`\n*   **Tag with an exact attribute value:** `a[href=\"home.html\"] { ... }`\n*   **ID Selector:** `#copyright { ... }` (targets an element with `id=\"copyright\"`)\n*   **Class Selector:** `.intro { ... }` (targets elements with `class=\"intro\"`)\n*   **Nth-child/Nth-of-type:** `li:nth-child(1)`, `p:nth-of-type(3)` (selects based on position among siblings).",
+      "subject": "SENG1050",
+      "week": "4",
+      "category": "CSS Selectors",
+      "difficulty": "hard",
+      "stats": {
+        "correct": 0,
+        "wrong": 0
+      },
+      "id": "csssel001"
+    },
+    {
+      "front": "What is the `class` attribute in HTML used for with CSS?",
+      "back": "The `class` attribute in HTML contains a **space-separated list of 'class names'**. These classes can then be used in **CSS selectors** to apply specific styles to elements (e.g., `<div class=\"copyright\">...</div>` styled by `div.copyright { font-style: italic }`). The `class` attribute is also very useful for **associating extra semantic meaning with HTML tags**, allowing designers to group elements logically even if their visual formatting is similar.",
+      "subject": "SENG1050",
+      "week": "4",
+      "category": "CSS Selectors",
+      "difficulty": "easy",
+      "stats": {
+        "correct": 0,
+        "wrong": 0
+      },
+      "id": "classattr001"
+    },
+    {
+      "front": "When should <span> and <div> tags be used in HTML in conjunction with CSS?",
+      "back": "Most HTML tags have implicit visual formatting, and while CSS can override these, some browser behaviors might persist. **`<div>` and `<span>` are the only HTML tags guaranteed not to carry implicit visual formatting**, so they should be used when another tag is not required for its semantics. Semantics can then be added to `<div>` and `<span>` elements using **classes**, providing a clean separation of structure/semantics from visual design.",
+      "subject": "SENG1050",
+      "week": "4",
+      "category": "HTML/CSS Best Practices",
+      "difficulty": "easy",
+      "stats": {
+        "correct": 0,
+        "wrong": 0
+      },
+      "id": "spandiv001"
+    },
+    {
+      "front": "How is CSS Specificity determined when two rules conflict?",
+      "back": "When multiple CSS rules in the cascade order conflict, the **most specific relevant selector is used** to determine which rule to apply. Specificity is based on three categories, from most to least specific:\n1.  **IDs** (e.g., `#foo`)\n2.  **Classes** (e.g., `.bar`)\n3.  **Types** (element names, including pseudo-elements, e.g., `div`)\n\nThe number of IDs in each relevant selector is checked first. If there's a tie, the number of classes is checked, then the number of types. If the specificity score is still tied, the **order of the rules matters, with the last relevant selector being applied**. For example, an ID selector (`#foo`) is more specific than a class selector (`.bar`).",
+      "subject": "SENG1050",
+      "week": "4",
+      "category": "CSS Basics",
+      "difficulty": "hard",
+      "stats": {
+        "correct": 0,
+        "wrong": 0
+      },
+      "id": "cssspec001"
+    },
+    {
+      "front": "Explain Absolute and Relative CSS units for font sizes.",
+      "back": "CSS understands multiple types of units for expressing sizes and quantities, divided into absolute and relative types. For `font-size`:\n\n*   **Absolute Units:** Fixed and relative only to the actual screen size. Examples include `px` (pixels), `pt` (points), `cm` (centimetres), `in` (inches).\n*   **Relative Units:** Relative to some other property of the webpage or window. Examples include:\n    *   `%` (percentage relative to the parent element).\n    *   `em` (relative to the font-size of the parent element).\n    *   `rem` (relative to the font-size of the root element).\n    *   `vw` (relative to the window width in percentage).\n    *   `vh` (relative to the window height in percentage).",
+      "subject": "SENG1050",
+      "week": "4",
+      "category": "CSS Units",
+      "difficulty": "medium",
+      "stats": {
+        "correct": 0,
+        "wrong": 0
+      },
+      "id": "cssunits001"
+    },
+    {
+      "front": "How is the `font-family` property used in CSS?",
+      "back": "The `font-family` property specifies a **comma-separated list of fonts, in order of preference**. The browser will try to use the first font in the list that is available on the user's system. Font names with spaces must be enclosed in double or single quotes. It is recommended to include at least one **generic font family** (e.g., `serif`, `sans-serif`, `cursive`, `fantasy`, `monospace`) as a fallback.",
+      "subject": "SENG1050",
+      "week": "4",
+      "category": "CSS Text Properties",
+      "difficulty": "easy",
+      "stats": {
+        "correct": 0,
+        "wrong": 0
+      },
+      "id": "fontfam001"
+    },
+    {
+      "front": "List and describe three CSS properties for text styling (excluding font-size and font-family).",
+      "back": "Three common CSS properties for text styling are:\n*   **`text-decoration`**: Specifies the line decoration of text. Values include `none`, `overline`, `underline`, and `line-through`.\n*   **`text-align`**: Controls the horizontal alignment of text within an element. Values include `left`, `right`, `center`, and `justify`.\n*   **`text-shadow`**: Applies a shadow effect to text. It specifies the horizontal shadow, vertical shadow, blur distance, and colour of the shadow (e.g., `h1 {text-shadow:2px 2px #FF0000;}`).\n\nOther properties include `font-style` (`normal`, `italic`, `oblique`), `font-variant` (`normal`, `small-caps`), `font-weight` (`normal`, `bold`, `100-900`), `text-indent`, `text-transform`, and `white-space`.",
+      "subject": "SENG1050",
+      "week": "4",
+      "category": "CSS Text Properties",
+      "difficulty": "medium",
+      "stats": {
+        "correct": 0,
+        "wrong": 0
+      },
+      "id": "csstext001"
+    },
+    {
+      "front": "How can CSS be used to style lists?",
+      "back": "CSS provides properties to control the appearance of lists:\n*   **`list-style-type`**: Changes the behaviour of list markers. For unordered lists, options include `disc`, `square`, `circle`. For ordered lists, options include `decimal`, `lower-roman`, `upper-roman`, `lower-alpha`, `upper-alpha`, etc..\n*   **`list-style-image`**: Allows you to use a custom image as the list marker (e.g., `url(uri)`).",
+      "subject": "SENG1050",
+      "week": "4",
+      "category": "CSS List Properties",
+      "difficulty": "easy",
+      "stats": {
+        "correct": 0,
+        "wrong": 0
+      },
+      "id": "csslist001"
+    },
+    {
+      "front": "List and describe three CSS background properties.",
+      "back": "Three common CSS background properties are:\n*   **`background-color`**: Sets the background color of an element's content, padding, and border areas.\n*   **`background-image`**: Sets one or several background images for an element.\n*   **`background-repeat`**: Specifies how background images are tiled after they have been sized and positioned (e.g., `repeat`, `repeat-x`, `repeat-y`, `no-repeat`, `space`, `round`).\n\nOther properties include `background-clip`, `background-position`, `background-size`, `background-attachment`, and `background-origin`, which can also be combined into a `background` shorthand property.",
+      "subject": "SENG1050",
+      "week": "4",
+      "category": "CSS Background Properties",
+      "difficulty": "medium",
+      "stats": {
+        "correct": 0,
+        "wrong": 0
+      },
+      "id": "cssbg001"
+    },
+    {
+      "front": "How are colors represented in HTML and CSS using hexadecimal values?",
+      "back": "Any colour can be thought of as a combination of three primary colours: red, green, and blue (RGB). In HTML/CSS, hexadecimal values are commonly used to represent colours.\n\n*   A hexadecimal is a base-16 numbering system, using characters 0-9 and A-F (A=10, F=15).\n*   Every colour can be represented as a **string of 6 hexadecimal characters** – two for red, two for green, and two for blue (e.g., `#FF0000` for maximum red). Each pair (00-FF) corresponds to an intensity from 0 to 255.\n*   Optionally, two more hexadecimal characters can be added to specify the **alpha (transparency)** (e.g., `#FFFF00BF` for 25% transparent yellow).\n\nCSS also supports basic colour names and extended colour keywords.",
+      "subject": "SENG1050",
+      "week": "4",
+      "category": "CSS Colors",
+      "difficulty": "easy",
+      "stats": {
+        "correct": 0,
+        "wrong": 0
+      },
+      "id": "csshexcolor001"
+    },
+    {
+      "front": "Explain the CSS Box Model.",
+      "back": "The **CSS Box Model** is the name of part of the layout system browsers use when rendering a website. It describes how each of the properties of a box (representing an HTML element) interact with each other and with other boxes. The box model layers are, from innermost to outermost:\n1.  **Content:** The actual content of the element.\n2.  **Padding:** Spacing between the content area and the border area.\n3.  **Border:** A line drawn around the padding area.\n4.  **Margin:** Spacing outside the border area.",
+      "subject": "SENG1050",
+      "week": "4",
+      "category": "CSS Layout",
+      "difficulty": "easy",
+      "stats": {
+        "correct": 0,
+        "wrong": 0
+      },
+      "id": "cssboxmodel001"
+    },
+    {
+      "front": "Describe `margin` and `padding` properties in the CSS Box Model.",
+      "back": "In the CSS Box Model:\n*   **`margin`**: Adds **spacing outside the border area** of an element.\n*   **`padding`**: Adds **spacing between the content area and the border area**.\n\nSince boxes have four sides, there are four different margins and paddings (`margin-top`, `margin-left`, `margin-bottom`, `margin-right`; `padding-top`, etc.). Shorthand versions are often used. Note that top and bottom margins can 'collapse' when elements are vertically adjacent, an element is empty, or a parent element has nothing separating it from its child elements.",
+      "subject": "SENG1050",
+      "week": "4",
+      "category": "CSS Box Model",
+      "difficulty": "easy",
+      "stats": {
+        "correct": 0,
+        "wrong": 0
+      },
+      "id": "cssmarginpad001"
+    },
+    {
+      "front": "How do `width` and `height` properties work in the CSS Box Model, and what is `box-sizing: border-box`?",
+      "back": "In the CSS Box Model, `width` and `height` can be assigned to boxes, usually using relative measurements like `%` or `em`. It is generally recommended to **avoid using fixed `height`**, letting the content dictate it. You can specify `min-height/width` and `max-height/width`.\n\nBy default, `width` and `height` apply **only to the content area**, excluding margin, border, or padding, meaning adding these will expand the element box. To include borders and padding in the `width` and `height` calculation (which is more intuitive in some cases), you should set **`box-sizing: border-box`**.",
+      "subject": "SENG1050",
+      "week": "4",
+      "category": "CSS Box Model",
+      "difficulty": "medium",
+      "stats": {
+        "correct": 0,
+        "wrong": 0
+      },
+      "id": "cssboxdim001"
+    },
+    {
+      "front": "How is the `border` property used for box decoration in CSS?",
+      "back": "The `border` property draws a line around the padding area (in the border area) of an element. It can be fine-tuned with related properties such as `border-width`, `border-color`, and `border-style`.\n\n`border-style` options include `solid`, `dashed`, `dotted`, `double`, `groove`, `ridge`, `inset`, and `outset`. You can also target individual sides using `border-top`, `border-left`, etc.. A shorthand `border` property combines `border-width`, `border-style`, and `border-color` (e.g., `border: 1px solid black`).",
+      "subject": "SENG1050",
+      "week": "4",
+      "category": "CSS Box Model",
+      "difficulty": "easy",
+      "stats": {
+        "correct": 0,
+        "wrong": 0
+      },
+      "id": "cssborder001"
+    },
+    {
+      "front": "How can the `float` property be used to position images in CSS?",
+      "back": "The **`float` property** is used for positioning and formatting content, such as letting an image float left or right next to text within a container.\n\nPossible values are:\n*   **`left`**: Aligns the element with the left edge of its enclosing box, and text flows around to the right.\n*   **`right`**: Aligns the element with the right edge of its enclosing box, and text flows around to the left.\n*   **`none`**: Places the element inline, or in a new block with text above and below.\n\n`float` works by taking the element out of the normal flow and moving it in the specified direction until the edge of the parent element or another floated element is reached. Note that **only text/inline elements will wrap around a float**; block elements will be positioned as if the floated element did not exist, which can be confusing.",
+      "subject": "SENG1050",
+      "week": "4",
+      "category": "CSS Layout",
+      "difficulty": "medium",
+      "stats": {
+        "correct": 0,
+        "wrong": 0
+      },
+      "id": "cssfloat001"
+    },
+    {
+      "front": "What are HTML Structural Elements, and why are they used?",
+      "back": "**HTML Structural Elements**, also known as **Semantic structural elements**, are specific HTML5 tags designed to **define different, meaningful parts of a web page**. They are not intended to replace `<div>` completely, but rather to structure the web page in a more meaningful manner, indicating the role or purpose of content within the document. Examples include `<header>`, `<nav>`, `<footer>`, `<main>`, `<aside>`, `<section>`, and `<article>`.",
+      "subject": "SENG1050",
+      "week": "5",
+      "category": "HTML5 Semantics",
+      "difficulty": "easy",
+      "stats": {
+        "correct": 0,
+        "wrong": 0
+      },
+      "id": "htmlstructelem001"
+    },
+    {
+      "front": "Describe the purpose of the <header> and <nav> HTML5 structural elements.",
+      "back": "*   **<header>:** Contains the **headings of a web page document or an area within it**, such as a section or article. It should be used as a container for introductory content or a set of navigational links. A document can have multiple `<header>` elements, but they cannot be placed within a `<footer>`, `<address>`, or another `<header>`.\n*   **<nav>:** Defines a **block of navigation links**. It contains a section of major navigation hyperlinks, but not all links in a document should be inside a `<nav>` element. It should also not be placed within a `<footer>` to include footer links.",
+      "subject": "SENG1050",
+      "week": "5",
+      "category": "HTML5 Structural Elements",
+      "difficulty": "easy",
+      "stats": {
+        "correct": 0,
+        "wrong": 0
+      },
+      "id": "headernav001"
+    },
+    {
+      "front": "Describe the purpose of the <footer> and <main> HTML5 structural elements.",
+      "back": "*   **<footer>:** Defines a **footer for a document or section**. It can contain information such as authorship, copyright, contact info, 'back to top' links, or related documents. A document can have several `<footer>` elements, but they cannot be inside another `<footer>` or `<header>`.\n*   **<main>:** Contains the **main page content**. The content inside `<main>` should be unique to the document, and there must not be more than one visible `<main>` element in a document. The `<main>` element can only be a descendent of `<html>`, `<body>`, `<div>`, or `<form>` elements.",
+      "subject": "SENG1050",
+      "week": "5",
+      "category": "HTML5 Structural Elements",
+      "difficulty": "easy",
+      "stats": {
+        "correct": 0,
+        "wrong": 0
+      },
+      "id": "footermain001"
+    },
+    {
+      "front": "Describe the purpose of the <aside>, <section>, and <article> HTML5 structural elements.",
+      "back": "*   **<aside>:** Contains a **sidebar, a note, or other tangential content**. It defines content that is related to, but separate from, the surrounding content, often used to enhance an article with additional information or highlight interesting parts.\n*   **<section>:** Contains a **thematic grouping of content**, such as a chapter, topic, or any other section of a document. A web page could have multiple sections, like an introduction, content, and conclusion.\n*   **<article>:** Contains an **independent entry**, such as a forum post, blog post, or newspaper article. It should be possible to distribute its content independently from the rest of the site. HTML pages can have `<section>` elements containing `<article>` elements, or vice versa.",
+      "subject": "SENG1050",
+      "week": "5",
+      "category": "HTML5 Structural Elements",
+      "difficulty": "medium",
+      "stats": {
+        "correct": 0,
+        "wrong": 0
+      },
+      "id": "asidesectart001"
+    },
+    {
+      "front": "How do <audio> and <video> tags work in HTML5, and what is the role of the <source> tag?",
+      "back": "*   The **<audio> tag** defines **sound**, such as music or other audio streams. Supported formats include MP3, WAV, OGG, and MP4 (MP3 being most common). The `controls` attribute displays audio controls (play/pause).\n*   The **<video> tag** specifies **video**, such as movie clips. Supported formats include MP4, WebM, and Ogg (MP4 is most common, WebM often produces smaller files).\n\nBoth tags use the **<source> tag** to specify **multiple media resources**. This allows you to provide alternate audio/video files, and the browser will select the first source it supports based on media type or codec. The `<source>` tag uses `src` (URL of media file) and `type` (MIME type) attributes.",
+      "subject": "SENG1050",
+      "week": "5",
+      "category": "HTML5 Media",
+      "difficulty": "medium",
+      "stats": {
+        "correct": 0,
+        "wrong": 0
+      },
+      "id": "media001"
+    },
+    {
+      "front": "How can responsive images be implemented using the `<img>` tag in HTML?",
+      "back": "Responsive images address two main considerations: optimizing bandwidth for different screen sizes and artistic choice. The `<img>` tag can implement responsive images using additional attributes:\n*   **`srcset`**: Specifies a comma-separated list of possible image files to load, along with their **original widths in pixels** (using the 'w' unit, not intended display width).\n*   **`sizes`**: Specifies a comma-separated list of **media conditions and the intended display width** (in `px` or `vw` units). The last entry is a default if no conditions match.\n\nThe browser stops at the first match in `sizes` and picks an image from `srcset` that best fits the intended display size.",
+      "subject": "SENG1050",
+      "week": "5",
+      "category": "HTML5 Images",
+      "difficulty": "hard",
+      "stats": {
+        "correct": 0,
+        "wrong": 0
+      },
+      "id": "respimg001"
+    },
+    {
+      "front": "What is the purpose of the <form> element in HTML?",
+      "back": "The **<form> element** is used to **create an HTML form**, serving as a **container for different input elements**. These input elements can include text fields, radio boxes, checkboxes, dropdown menus, date selectors, and buttons, allowing users to input data that can then be submitted to a server for processing.",
+      "subject": "SENG1050",
+      "week": "5",
+      "category": "HTML Forms",
+      "difficulty": "easy",
+      "stats": {
+        "correct": 0,
+        "wrong": 0
+      },
+      "id": "form001"
+    },
+    {
+      "front": "What is the <label> tag used for in HTML forms?",
+      "back": "The **<label> tag** defines a **label for input elements** (and other form-related elements like `textarea`, `progress`). The `for` attribute of the `<label>` must be equal to the `id` attribute of the corresponding input element. This is crucial for **accessibility, especially for screen readers**, which will read out the label. Additionally, clicking on a label for a checkbox or radio button will toggle that control.",
+      "subject": "SENG1050",
+      "week": "5",
+      "category": "HTML Forms",
+      "difficulty": "easy",
+      "stats": {
+        "correct": 0,
+        "wrong": 0
+      },
+      "id": "labeltag001"
+    },
+    {
+      "front": "List five different `type` attributes for the <input> tag and their functions.",
+      "back": "The `<input>` tag is used for most form controls, with its `type` attribute defining the input's function. Five different `type` attributes include:\n1.  **`text`**: Defines a single-line text input field.\n2.  **`password`**: Defines a single-line password input field (characters are masked).\n3.  **`submit`**: Defines a button for submitting form data to a form-handler.\n4.  **`radio`**: Allows users to select **only one option** from a set of choices; inputs in the same group must share the same `name` attribute.\n5.  **`checkbox`**: Allows users to select **one or more options** from a set of choices; inputs in the same group must share the same `name` attribute.\n\nOther types include `button`, `file`, `hidden`, `image`, `color`, `date`, `month`, `time`, `week`, `search`, `range`, `url`, `number`, `tel`, and `email`.",
+      "subject": "SENG1050",
+      "week": "5",
+      "category": "HTML Forms",
+      "difficulty": "medium",
+      "stats": {
+        "correct": 0,
+        "wrong": 0
+      },
+      "id": "inputtype001"
+    },
+    {
+      "front": "What is the difference between `<input type=\"submit\">` and the `<button>` tag for submitting forms?",
+      "back": "*   **`<input type=\"submit\">`**: Defines a basic button specifically for **submitting form data** to a form-handler. It's a self-closing tag and typically displays simple text as its label.\n*   **`<button>`**: Defines a **clickable button** that can serve various purposes (submit, reset, generic button). Unlike `<input>`, the `<button>` tag is a container, allowing you to **put content (text, images, other HTML tags like `<i>`, `<b>`, `<br>`) inside it**. This makes it more flexible for custom button designs. It is important to always specify the `type` attribute (`submit`, `reset`, or `button`) for the `<button>` element.",
+      "subject": "SENG1050",
+      "week": "5",
+      "category": "HTML Forms",
+      "difficulty": "easy",
+      "stats": {
+        "correct": 0,
+        "wrong": 0
+      },
+      "id": "submitbutton001"
+    },
+    {
+      "front": "How do HTML Drop-Down Menus work using <select> and <option> tags?",
+      "back": "HTML Drop-Down Menus are created using the **<select>...</select> tag** as a container. This tag can only contain **<option>...</option> tags**, each representing one option within the menu.\n\n**<select> attributes:**\n*   **`multiple=\"multiple\"`**: Allows the user to select more than one option.\n*   **`size=\"number\"`**: Specifies how many different options are visible at one time. `size=\"1\"` acts as a dropdown, while higher values create scrolling lists.\n\n**<option> attributes:**\n*   **`selected=\"selected\"`**: Specifies if this option is initially selected.\n*   **`value=\"text\"`**: Defines the value that is sent to the server if this option is selected. The text between the opening and closing `<option>` tags is displayed in the menu.",
+      "subject": "SENG1050",
+      "week": "5",
+      "category": "HTML Forms",
+      "difficulty": "medium",
+      "stats": {
+        "correct": 0,
+        "wrong": 0
+      },
+      "id": "dropdown001"
+    },
+    {
+      "front": "What are the `action` and `method` attributes for the <form> tag, and what is the difference between `GET` and `POST` methods?",
+      "back": "The **`action` attribute** specifies the **URL of the server page which will process the form**. The **`method` attribute** defines the **HTTP request used to submit the form to the server**.\n\n**GET Method:**\n*   The form data is **appended to the URL in `name/value` pairs** (e.g., `url?input1=value1&input2=value2&…`).\n*   **Never use it to send sensitive data** due to visibility in the URL.\n*   Has a **size limitation** (around 3000 characters).\n*   Results can be **bookmarked**.\n\n**POST Method:**\n*   Form data is sent **inside the body of the HTTP request**.\n*   Has **no size limitation**.\n*   Results **cannot be bookmarked**.\n\nForm processing on the server is typically performed by CGI scripts, JSP/ASP pages, or server-supported scripts (Python, PHP, Perl, server-side JavaScript).",
+      "subject": "SENG1050",
+      "week": "5",
+      "category": "HTML Forms",
+      "difficulty": "hard",
+      "stats": {
+        "correct": 0,
+        "wrong": 0
+      },
+      "id": "formactionmethod001"
+    },
+    {
+      "front": "What are the main tags for creating an HTML table, and what content can a table contain?",
+      "back": "HTML tables are used to organize tabular information. The main tag is **`<table>...</table>`**.\n\nA table can contain:\n*   **`<caption>...</caption>`**: Text to display as the table’s caption.\n*   **`<thead>...</thead>`**: Rows to display as the table’s header.\n*   **`<tfoot>...</tfoot>`**: Rows to display as the table’s footer.\n*   **`<tbody>...</tbody>`**: Rows to display as the table’s body (the main content).\n\nWithin these sections, a table row is defined by **`<tr>...</tr>`**, which in turn contains table heading cells (`<th>...</th>`) or table data cells (`<td>...</td>`). Cells can span multiple rows or columns using `rowspan` and `colspan` attributes, and can even contain any body tags, including nested tables.",
+      "subject": "SENG1050",
+      "week": "5",
+      "category": "HTML Tables",
+      "difficulty": "medium",
+      "stats": {
+        "correct": 0,
+        "wrong": 0
+      },
+      "id": "htmltable001"
+    },
+    {
+      "front": "How can CSS be used to style HTML tables, focusing on borders and column width?",
+      "back": "CSS offers various properties to style HTML tables:\n*   **Borders:** The `border` property specifies table borders (e.g., `table, th, td {border: 1px solid black;}`). To remove common 'double borders' (where table, `th`, and `td` elements each have their own borders), use `border-collapse: collapse;` on the `<table>` element. `border-style` can also be used, with `hidden` overriding adjacent styles.\n*   **Column Width:** `width` and `height` properties suggest minimum sizes. The `<colgroup>` element, placed after the `<caption>` but before `<thead>`, is useful for assigning styles (like `width`) to all columns efficiently without repeating styles for each `<td>` tag (e.g., `<col style=\"width:40%\">`).\n\nOther properties like `empty-cells`, `table-layout` (auto/fixed), `text-align`, and `vertical-align` can also be used.",
+      "subject": "SENG1050",
+      "week": "5",
+      "category": "CSS Tables",
+      "difficulty": "medium",
+      "stats": {
+        "correct": 0,
+        "wrong": 0
+      },
+      "id": "csstable001"
+    },
+    {
+      "front": "What is the problem with browser default styles, and how does a CSS Reset address it?",
+      "back": "The problem with browser default styles is that the **styles not explicitly specified in CSS still use browser defaults**, resulting in a partial mix of semantics and styling. Since different browsers have varying defaults for HTML elements in their internal stylesheets, this can cause webpages to **look different across different browsers**, leading to visual inconsistencies.\n\nA **CSS Reset** addresses this by being an external CSS file linked in the HTML document's `<head>` that **overrides all default browser styles**, making most HTML elements look identical initially. This gives the developer full control over styling, ensuring consistent presentation and user experience across platforms. The CSS reset is typically the first external CSS linked, so custom styles can be applied on top of it.",
+      "subject": "SENG1050",
+      "week": "5",
+      "category": "CSS Best Practices",
+      "difficulty": "easy",
+      "stats": {
+        "correct": 0,
+        "wrong": 0
+      },
+      "id": "cssreset001"
+    },
+    {
+      "front": "Explain the concept of 'Normal Document Flow' in CSS layouts.",
+      "back": "**Normal Document Flow** is the **default way in which elements are rendered and positioned** in a web page, allowing for their size and margins.\n*   In a **block formatting context**, boxes (block-level elements) are laid out **one after the other, vertically**, starting from the top of a containing block.\n*   In an **inline formatting context**, boxes (inline elements) are laid out **horizontally, one after the other**, also beginning at the top of a containing block.",
+      "subject": "SENG1050",
+      "week": "5",
+      "category": "CSS Layout",
+      "difficulty": "easy",
+      "stats": {
+        "correct": 0,
+        "wrong": 0
+      },
+      "id": "normalflow001"
+    },
+    {
+      "front": "Differentiate between `display: block`, `display: inline`, and `display: inline-block`.",
+      "back": "These `display` properties control how elements behave in the Normal Document Flow:\n*   **`display: block`**: Places the element in a **block formatting context**. It starts on a new line, takes up the full available width, and forces subsequent non-child elements onto a new line. Only vertical margins and padding provide space between elements.\n*   **`display: inline`**: Places the element in an **inline formatting context**. It does not start on a new line and only takes up as much width as necessary. Any `height` and `width` properties are ignored, being determined by content. Only horizontal margins and padding provide space between elements.\n*   **`display: inline-block`**: Places the element in an **inline formatting context**, but `width` and `height` properties **are respected**. It does not start on a new line, and both horizontal and vertical margins and padding provide space between elements.",
+      "subject": "SENG1050",
+      "week": "5",
+      "category": "CSS Layout",
+      "difficulty": "medium",
+      "stats": {
+        "correct": 0,
+        "wrong": 0
+      },
+      "id": "displaytypes001"
+    },
+    {
+      "front": "Explain Static and Relative CSS Positioning.",
+      "back": "*   **Static Positioning (`position: static`)**: This is the **default position** for every element. Elements are placed in their normal position within the document flow, without any special positioning applied.\n*   **Relative Positioning (`position: relative`)**: Once a relatively positioned element has taken its place in the normal flow, its **final position can be modified** using `top`, `bottom`, `left`, and `right` properties. The element is still 'virtually' located in its original position in the normal flow, meaning a gap is left where it used to be, even if it visually overlaps other elements.",
+      "subject": "SENG1050",
+      "week": "5",
+      "category": "CSS Positioning",
+      "difficulty": "easy",
+      "stats": {
+        "correct": 0,
+        "wrong": 0
+      },
+      "id": "staticrelpos001"
+    },
+    {
+      "front": "Explain Absolute and Fixed CSS Positioning.",
+      "back": "*   **Absolute Positioning (`position: absolute`)**: An absolutely positioned element is **removed from the normal document flow** and sits on its own layer. This means its parent will not expand to fit it, and other elements in the normal flow may occupy the same space. `top`, `bottom`, `left`, and `right` properties position the element **relative to its nearest parent that has a non-static position value** (or the root element if no such parent exists). This is useful for isolated UI features like popup boxes.\n*   **Fixed Positioning (`position: fixed`)**: An element with fixed positioning is also **removed from the normal flow**. It is positioned **relative to the viewport**, meaning it always stays in the same place even if the page is scrolled. This is ideal for persistent UI items like navigation menus that always remain visible.",
+      "subject": "SENG1050",
+      "week": "5",
+      "category": "CSS Positioning",
+      "difficulty": "medium",
+      "stats": {
+        "correct": 0,
+        "wrong": 0
+      },
+      "id": "absfixedpos001"
+    },
+    {
+      "front": "What is Sticky CSS Positioning?",
+      "back": "**Sticky Positioning (`position: sticky`)** is a **hybrid between relative and fixed positioning**. It allows a positioned element to behave as if it's relatively positioned until it scrolls to a certain threshold (e.g., `top: 30px`) relative to its nearest scrolling ancestor (often the viewport). Once that threshold is reached, the element becomes fixed, sticking to that position and no longer scrolling away. This is useful for navigation bars that scroll with the page initially but then stick to the top.",
+      "subject": "SENG1050",
+      "week": "5",
+      "category": "CSS Positioning",
+      "difficulty": "medium",
+      "stats": {
+        "correct": 0,
+        "wrong": 0
+      },
+      "id": "stickypos001"
+    },
+    {
+      "front": "How does the `clear` property interact with floated elements in CSS?",
+      "back": "The **`clear` property** controls the flow of elements next to floated elements, specifying whether and how an element should be **moved below floating elements**. It effectively 'pushes away' from specified floats.\n\nPossible values are:\n*   **`none`**: The element is not pushed below left or right floated elements (default).\n*   **`left`**: The element is pushed below left floated elements.\n*   **`right`**: The element is pushed below right floated elements.\n*   **`both`**: The element is pushed below both left and right floated elements.",
+      "subject": "SENG1050",
+      "week": "5",
+      "category": "CSS Layout",
+      "difficulty": "easy",
+      "stats": {
+        "correct": 0,
+        "wrong": 0
+      },
+      "id": "cssclear001"
+    },
+    {
+      "front": "Explain the CSS `overflow` property.",
+      "back": "The **`overflow` property** sets the desired behaviour for when the **content of an element is too big to fit within its block** (i.e., it overflows). It considers both horizontal and vertical directions.\n\nPossible options are:\n*   **`visible`**: Content is not clipped and might be visible beyond the element’s box.\n*   **`scroll`**: Browsers always display scrollbars, regardless of whether content is actually clipped.\n*   **`hidden`**: Content is clipped if necessary to fit within the element’s padding box. Scrollbars are hidden, but programmatic scrolling is still possible. If the element contains only floated elements, it will expand to fit them.\n*   **`clip`**: Same as `hidden`, but does not allow scrolling.\n*   **`auto`**: The browser decides what is best to do, depending on whether the content overflows.",
+      "subject": "SENG1050",
+      "week": "5",
+      "category": "CSS Layout",
+      "difficulty": "medium",
+      "stats": {
+        "correct": 0,
+        "wrong": 0
+      },
+      "id": "cssoverflow001"
+    },
+    {
+      "front": "What is CSS Flexbox, and what are some of its key properties for positioning content?",
+      "back": "**CSS Flexbox** (using `display: flex`) places an element in a **flexible box layout**. This behaves like a block-level element but allows its child elements to be laid out very precisely, while also growing and shrinking with the size of the viewport.\n\nKey properties for positioning content include:\n*   **`justify-content`**: Specifies how **horizontal space** should be distributed between child items (e.g., `flex-start`, `flex-end`, `center`, `space-between`, `space-around`, `space-evenly`).\n*   **`align-items`**: Specifies how items should be **positioned vertically** (e.g., `flex-start`, `flex-end`, `center`).\n*   **`flex-direction`**: Specifies how items are laid out in a flexbox (e.g., `row`, `row-reverse`, `column`, `column-reverse`). If a column direction is set, the horizontal and vertical axes are swapped.\n\nFlexbox also has properties like `flex-basis`, `flex-grow`, `flex-shrink`, and `order` to control individual item sizing and ordering.",
+      "subject": "SENG1050",
+      "week": "5",
+      "category": "CSS Layout",
+      "difficulty": "hard",
+      "stats": {
+        "correct": 0,
+        "wrong": 0
+      },
+      "id": "cssflexbox001"
+    }
+  ]
+}

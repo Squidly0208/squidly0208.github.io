@@ -1,0 +1,330 @@
+:root {
+    --bg: #ffffff;
+    --text: #222;
+    --card-bg: #fefefe;
+    --accent: #3498db;
+    --accent-hover: #2980b9;
+    --card-shadow: rgba(0, 0, 0, 0.12);
+    --toast-bg: var(--accent);
+    --toast-text: white;
+    --transition-speed: 0.35s;
+}
+
+body.dark {
+    --bg: #121212;
+    --text: #eee;
+    --card-bg: #1f1f1f;
+    --accent: #9b59b6;
+    --accent-hover: #8246b5;
+    --card-shadow: rgba(255, 255, 255, 0.1);
+    --toast-bg: var(--accent);
+    --toast-text: white;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: var(--bg);
+    color: var(--text);
+    margin: 0;
+    padding: 0 16px 40px;
+    min-height: 100vh;
+    transition: background-color 0.3s ease, color 0.3s ease;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+header {
+    text-align: center;
+    padding: 1rem 0 0.25rem;
+    position: sticky;
+    top: 0;
+    background: var(--bg);
+    z-index: 10;
+    border-bottom: 1px solid #ddd;
+}
+
+.theme-toggle {
+    margin-bottom: 1rem;
+}
+
+h1 {
+    font-weight: 700;
+    font-size: 2.2rem;
+    margin: 0;
+}
+
+.filter-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 12px;
+    background: var(--card-bg);
+    padding: 16px 20px;
+    border-radius: 14px;
+    box-shadow: 0 5px 15px var(--card-shadow);
+    max-width: 700px;
+    margin: 0 auto 24px;
+    position: sticky;
+    top: 4.5rem;
+    z-index: 9;
+}
+
+select,
+button {
+    font-size: 1rem;
+    border-radius: 8px;
+    padding: 12px 16px;
+    border: 1.5px solid #ccc;
+    min-width: 140px;
+    transition: border-color 0.25s ease;
+    cursor: pointer;
+    outline-offset: 2px;
+    user-select: none;
+}
+
+select:focus,
+button:focus {
+    border-color: var(--accent);
+    outline: none;
+    box-shadow: 0 0 8px var(--accent);
+}
+
+button {
+    background-color: var(--accent);
+    color: white;
+    font-weight: 600;
+    border: none;
+    min-width: 110px;
+    flex-shrink: 0;
+    transition: background-color var(--transition-speed);
+}
+
+button:hover:not(:disabled),
+button:focus:not(:disabled) {
+    background-color: var(--accent-hover);
+}
+
+button:disabled {
+    opacity: 0.5;
+    cursor: default;
+}
+
+.flashcard-container {
+    max-width: 700px;
+    margin: auto;
+    user-select: none;
+    /* prevent accidental text selection when tapping cards */
+}
+
+.progress-wrapper {
+    width: 100%;
+    background: #ddd;
+    border-radius: 12px;
+    overflow: hidden;
+    height: 12px;
+    margin-bottom: 14px;
+    box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.08);
+}
+
+.progress-bar {
+    height: 100%;
+    width: 0%;
+    background-color: var(--accent);
+    transition: width 0.4s ease;
+    border-radius: 12px 0 0 12px;
+}
+
+.card-meta {
+    font-size: 0.9rem;
+    opacity: 0.7;
+    text-align: center;
+    margin-bottom: 18px;
+    font-weight: 600;
+}
+
+.flashcard {
+    perspective: 1200px;
+    cursor: pointer;
+    margin: 0 auto 28px;
+    max-width: 700px;
+    border-radius: 16px;
+    transition: box-shadow 0.3s ease;
+    box-shadow: 0 15px 35px var(--card-shadow);
+    will-change: transform;
+}
+
+.flashcard:hover,
+.flashcard:focus {
+    box-shadow: 0 25px 45px rgba(0, 0, 0, 0.15);
+    outline: none;
+}
+
+.flashcard:active {
+    transform: scale(0.97);
+    transition: transform 0.1s ease;
+}
+
+.flashcard .inner {
+    position: relative;
+    width: 100%;
+    min-height: 250px;
+    border-radius: 16px;
+    transition: transform 0.7s cubic-bezier(0.4, 0, 0.2, 1);
+    transform-style: preserve-3d;
+    box-sizing: border-box;
+}
+
+.flashcard.flipped .inner {
+    transform: rotateY(180deg);
+}
+
+.flashcard .front,
+.flashcard .back {
+    position: absolute;
+    width: 100%;
+    min-height: 250px;
+    background: var(--card-bg);
+    color: var(--text);
+    border-radius: 16px;
+    padding: 28px 32px;
+    box-sizing: border-box;
+    box-shadow: 0 8px 20px var(--card-shadow);
+    backface-visibility: hidden;
+    display: flex;
+    align-items: flex-start;
+    justify-content: center;
+    font-size: 1.25rem;
+    line-height: 1.6;
+    user-select: none;
+    font-weight: 500;
+}
+
+.flashcard .front small,
+.flashcard .back small {
+    position: absolute;
+    top: 14px;
+    left: 20px;
+    font-size: 0.8rem;
+    opacity: 0.5;
+    font-weight: 700;
+    letter-spacing: 0.06em;
+    user-select: none;
+    pointer-events: none;
+}
+
+.flashcard .back {
+    transform: rotateY(180deg);
+    color: var(--text);
+    white-space: pre-wrap;
+}
+
+.controls {
+    text-align: center;
+}
+
+.controls button {
+    font-size: 1.1rem;
+    margin: 0 12px;
+    min-width: 140px;
+    padding: 14px 22px;
+    border-radius: 12px;
+    font-weight: 600;
+    user-select: none;
+    transition: background-color var(--transition-speed);
+}
+
+.controls button:first-child {
+    background-color: #27ae60;
+}
+
+.controls button:first-child:hover:not(:disabled),
+.controls button:first-child:focus:not(:disabled) {
+    background-color: #219150;
+}
+
+.controls button:last-child {
+    background-color: #e74c3c;
+}
+
+.controls button:last-child:hover:not(:disabled),
+.controls button:last-child:focus:not(:disabled) {
+    background-color: #c0392b;
+}
+
+.result-item.correct {
+    background: #d4edda;
+    color: #155724;
+    padding: 10px;
+    margin: 5px 0;
+}
+
+.result-item.wrong {
+    background: #f8d7da;
+    color: #721c24;
+    padding: 10px;
+    margin: 5px 0;
+}
+
+.result-summary {
+    margin-bottom: 20px;
+    font-weight: bold;
+}
+
+
+.toast {
+    position: fixed;
+    bottom: 24px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: var(--toast-bg);
+    color: var(--toast-text);
+    padding: 14px 26px;
+    border-radius: 14px;
+    font-weight: 600;
+    font-size: 1rem;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.4s ease;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+    user-select: none;
+    z-index: 1000;
+}
+
+.toast.show {
+    opacity: 1;
+    pointer-events: auto;
+}
+
+/* Responsive adjustments */
+@media (max-width: 480px) {
+    body {
+        padding: 0 12px 60px;
+    }
+
+    .filter-container {
+        max-width: 100%;
+        padding: 12px 14px;
+    }
+
+    select,
+    button {
+        min-width: 100%;
+        margin: 6px 0;
+    }
+
+    .controls button {
+        min-width: 140px;
+        margin: 10px 8px;
+    }
+
+    .flashcard .front,
+    .flashcard .back {
+        font-size: 1rem;
+        min-height: 210px;
+        padding: 22px 24px;
+    }
+}
