@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+  <title>Flashcards App</title>
+  <link rel="stylesheet" href="style.css" />
+  <link rel="shortcut icon" href="./Images/logo.png" type="image/x-icon">
+</head>
+<body>
+  <header>
+    <h1>Flashcards Study App</h1>
+    <div class="theme-toggle">
+      <label>
+        <input type="checkbox" id="themeSwitcher" />
+        Dark Mode
+      </label>
+    </div>
+  </header>
+
+  <main>
+    <section class="filter-container">
+      <select id="subjectSelect" aria-label="Select Subject"></select>
+      <select id="weekSelect" aria-label="Select Week"><option value="">All Weeks</option></select>
+      <select id="categorySelect" aria-label="Select Category"><option value="">All Categories</option></select>
+      <button id="startBtn" aria-label="Start flashcards">Start</button>
+    </section>
+
+    <section class="flashcard-container" id="flashcardContainer" style="display: none;">
+      <div class="progress-wrapper" aria-label="Flashcard progress">
+        <div class="progress-bar" id="progressBar"></div>
+      </div>
+      <div class="card-meta" id="cardCounter" aria-live="polite"></div>
+
+      <div class="flashcard" id="flashcard" onclick="flipCard()" role="button" tabindex="0" aria-pressed="false" aria-label="Flashcard: tap or press enter to flip">
+        <div class="inner">
+          <div class="front" id="cardFront"><small>Front</small></div>
+          <div class="back" id="cardBack"><small>Back</small></div>
+        </div>
+      </div>
+
+      <div class="controls">
+        <button onclick="markAnswer(true)" id="correctBtn" aria-label="Mark as correct">✔ Correct</button>
+        <button onclick="markAnswer(false)" id="wrongBtn" aria-label="Mark as wrong">✖ Wrong</button>
+      </div>
+    </section>
+    <div id="resultsContainer" style="display: none;"></div>
+
+  </main>
+
+  <div id="toast" class="toast" role="alert" aria-live="assertive"></div>
+
+  <script src="script.js"></script>
+</body>
+</html>

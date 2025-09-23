@@ -1,55 +1,307 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
-  <title>Flashcards App</title>
-  <link rel="stylesheet" href="style.css" />
-  <link rel="shortcut icon" href="./Images/logo.png" type="image/x-icon">
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Squidly0208 — Developer Portfolio</title>
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+  <link rel="shortcut icon" href="./images/logo.svg" type="image/x-icon">
+  <style>
+    :root{
+      --primary:#1b9aaa; /* vivid turquoise */
+      --accent:#06d6a0;  /* azure */
+      --bg:#171717;      /* near black */
+      --card:#1e1e1e;
+      --muted:#a6a6a6;
+      --text:#fdfffc;
+      --glass: rgba(255,255,255,0.03);
+      --radius:18px;
+    }
+    *{box-sizing:border-box}
+    html,body{height:100%}
+    body{
+      margin:0;
+      min-height:100%;
+      font-family:Inter,system-ui,-apple-system,"Segoe UI",Roboto,"Helvetica Neue",Arial;
+      background:#101010;
+      background-repeat: no-repeat;
+      color:var(--text);
+      -webkit-font-smoothing:antialiased;
+      -moz-osx-font-smoothing:grayscale;
+      padding:32px;
+      display:flex;
+      justify-content:center;
+    }
+    .container{
+      width:100%;
+      max-width:1100px;
+    }
+
+    header{
+      display:flex;
+      gap:20px;
+      align-items:center;
+      margin-bottom:28px;
+    }
+    .logo-wrap{
+      width:110px;
+      height:110px;
+      background:var(--glass);
+      border-radius:20px;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      box-shadow:0 8px 30px rgba(0,0,0,0.6), inset 0 1px 0 rgba(255,255,255,0.02);
+      flex-shrink:0;
+      overflow:hidden;
+    }
+    .logo-wrap img{width:90%;height:90%;object-fit:contain;display:block}
+    .hero{
+      display:flex;
+      flex-direction:column;
+      gap:6px;
+    }
+    .title{font-family:Orbitron,Inter,monospace;font-weight:700;color:var(--accent);font-size:28px;letter-spacing:1px}
+    .subtitle{color:var(--muted);font-weight:500}
+
+    nav{
+      margin-top:14px;
+      display:flex;
+      gap:10px;
+      flex-wrap:wrap;
+    }
+    .nav-link{
+      padding:8px 12px;border-radius:999px;background:transparent;border:1px solid transparent;color:var(--muted);font-size:14px;cursor:pointer
+    }
+    .nav-link:hover{color:var(--primary);border-color:rgba(65,234,212,0.08)}
+
+    main{
+      display:grid;
+      grid-template-columns:1fr 360px;
+      gap:24px;
+      margin-top:22px;
+    }
+
+    /* left column */
+    .panel{background:linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));padding:22px;border-radius:var(--radius);box-shadow:0 8px 24px rgba(0,0,0,0.6)}
+    .intro{font-size:15px;color:var(--muted);line-height:1.6}
+
+    .skills{display:flex;flex-wrap:wrap;gap:10px;margin-top:14px}
+    .skill{background:rgba(255,255,255,0.02);padding:8px 12px;border-radius:10px;border:1px solid rgba(255,255,255,0.02);font-weight:600;font-size:13px;color:var(--muted)}
+
+    .projects{display:grid;gap:12px;margin-top:16px}
+    .project{padding:14px;border-radius:14px;background:linear-gradient(180deg, rgba(255,255,255,0.015), rgba(255,255,255,0.01));border:1px solid rgba(255,255,255,0.02)}
+    .project h4{margin:0 0 6px 0;color:var(--primary);font-family:Orbitron,Inter}
+    .project p{margin:0;color:var(--muted);font-size:14px}
+
+    /* right column */
+    .aside{position:sticky;top:32px;display:flex;flex-direction:column;gap:12px}
+    .card{background:var(--card);padding:16px;border-radius:14px;border:1px solid rgba(255,255,255,0.03)}
+    .card h3{margin:0 0 8px 0;color:var(--accent);font-family:Orbitron}
+    .timeline{display:flex;flex-direction:column;gap:10px}
+    .tl-item{padding:10px;border-radius:10px;background:linear-gradient(180deg, rgba(255,255,255,0.01), transparent);border:1px solid rgba(255,255,255,0.02)}
+    .tl-item .role{font-weight:700;color:var(--primary)}
+    .tl-item .meta{font-size:13px;color:var(--muted)}
+
+    .quotes{display:flex;flex-direction:column;gap:8px}
+    .quote{font-style:italic;color:var(--muted);padding:10px;border-left:3px solid rgba(192,184,221,0.08);border-radius:6px}
+    .quote .who{display:block;margin-top:8px;font-weight:700;color:var(--text);font-size:13px}
+
+    footer{margin-top:26px;color:var(--muted);font-size:13px;text-align:center}
+
+    /* responsive */
+    @media (max-width:980px){main{grid-template-columns:1fr}} 
+  </style>
 </head>
 <body>
-  <header>
-    <h1>Flashcards Study App</h1>
-    <div class="theme-toggle">
-      <label>
-        <input type="checkbox" id="themeSwitcher" />
-        Dark Mode
-      </label>
-    </div>
-  </header>
-
-  <main>
-    <section class="filter-container">
-      <select id="subjectSelect" aria-label="Select Subject"></select>
-      <select id="weekSelect" aria-label="Select Week"><option value="">All Weeks</option></select>
-      <select id="categorySelect" aria-label="Select Category"><option value="">All Categories</option></select>
-      <button id="startBtn" aria-label="Start flashcards">Start</button>
-    </section>
-
-    <section class="flashcard-container" id="flashcardContainer" style="display: none;">
-      <div class="progress-wrapper" aria-label="Flashcard progress">
-        <div class="progress-bar" id="progressBar"></div>
+  <div class="container">
+    <header>
+      <div class="logo-wrap">
+        <img src="./images/logo.svg" alt="Squidly2519 logo">
       </div>
-      <div class="card-meta" id="cardCounter" aria-live="polite"></div>
+      <div class="hero">
+        <div class="title">Squidly0208</div>
+        <div class="subtitle">Software Engineer • SAPHI Engineering — Newcastle, AU</div>
+        <nav>
+          <button class="nav-link" onclick="document.getElementById('about').scrollIntoView({behavior:'smooth'})">About</button>
+          <button class="nav-link" onclick="document.getElementById('skills').scrollIntoView({behavior:'smooth'})">Skills</button>
+          <button class="nav-link" onclick="document.getElementById('projects').scrollIntoView({behavior:'smooth'})">Projects</button>
+          <button class="nav-link" onclick="document.getElementById('experience').scrollIntoView({behavior:'smooth'})">Experience</button>
+          <button class="nav-link" onclick="document.getElementById('quotes').scrollIntoView({behavior:'smooth'})">Quotes</button>
+        </nav>
+      </div>
+    </header>
 
-      <div class="flashcard" id="flashcard" onclick="flipCard()" role="button" tabindex="0" aria-pressed="false" aria-label="Flashcard: tap or press enter to flip">
-        <div class="inner">
-          <div class="front" id="cardFront"><small>Front</small></div>
-          <div class="back" id="cardBack"><small>Back</small></div>
+    <main>
+      <section>
+        <div id="about" class="panel">
+          <h2 style="margin:0 0 10px 0;color:var(--accent);font-family:Orbitron">About</h2>
+          <p class="intro">Hi — I’m Lucas (Squidly0208). I build embedded systems, AI tooling and web/mobile apps that focus on accessibility and collaboration. I work at SAPHI Engineering as a Software Engineer (Level 2) and collaborate with universities and community organisations to ship polished, research-informed products.</p>
+
+          <div id="skills" style="margin-top:18px">
+            <h3 style="margin:0 0 8px 0;color:var(--primary);font-family:Orbitron">Skills</h3>
+            <div class="skills">
+              <span class="skill">Adafruit</span>
+              <span class="skill">AI</span>
+              <span class="skill">Arduino</span>
+              <span class="skill">AutoDesk Eagle</span>
+              <span class="skill">CSS</span>
+              <span class="skill">Dart</span>
+              <span class="skill">Firebase Auth</span>
+              <span class="skill">Firebase</span>
+              <span class="skill">Flutter</span>
+              <span class="skill">Fusion 360</span>
+              <span class="skill">Git</span>
+              <span class="skill">GitHub</span>
+              <span class="skill">HTML</span>
+              <span class="skill">Java</span>
+              <span class="skill">JavaScript</span>
+              <span class="skill">Linux - Debian</span>
+              <span class="skill">MicroPython</span>
+              <span class="skill">Pandas</span>
+              <span class="skill">Python</span>
+              <span class="skill">PyTorch</span>
+              <span class="skill">Raspberry Pi</span>
+              <span class="skill">SVG</span>
+              <span class="skill">TensorFlow</span>
+              <span class="skill">Visual Studio</span>
+              <span class="skill">Visual Studio Code</span>
+            </div>
+          </div>
+
+          <div id="projects" style="margin-top:18px">
+            <h3 style="margin:0 0 8px 0;color:var(--primary);font-family:Orbitron">Projects</h3>
+            <div class="projects">
+              <div class="project">
+                <h4>Strocoge</h4>
+                <p>A research-driven project created with Associate / Senior Lecturers and an Associate Professor at The University of Newcastle. Strocoge gives a voice to people in need via a glove embedded with sensors and electronics that translate movement into communication.</p>
+              </div>
+
+              <div class="project">
+                <h4>Luvium</h4>
+                <p>A social media website designed, developed and tested to increase collaboration at Cooks Hill Campus. Luvium is now being redesigned to support university workflows for The University of Newcastle.</p>
+              </div>
+
+              <div class="project">
+                <h4>AAC App</h4>
+                <p>An Augmentative and Alternative Communication app concept for cross-platform devices (Windows → iPhone) that focuses on deep customisation to help people communicate more effectively than many current solutions.</p>
+              </div>
+
+              <div class="project">
+                <h4>Squidly's Folder Tools</h4>
+                <p>A Python toolkit with developer and ML utilities for everyday tasks — built to be safe, fast and avoid sketchy third-party websites.</p>
+              </div>
+
+              <div class="project">
+                <h4>Babel-Search</h4>
+                <p>A word-hunting game set inside the Library of Babel. Players hunt real words hidden in random pages, race the clock, and score based on letter rarity.</p>
+              </div>
+
+              <div class="project">
+                <h4>BPE-Flower</h4>
+                <p>An editable web graph created for Big Picture Education — a clean digital tool for tracking student progress and goals.</p>
+              </div>
+
+              <div class="project">
+                <h4>UConSoft</h4>
+                <p>A spin-out of Luvium focused on supporting universities with marketing, student portfolios and WIL selection tools for better student outcomes.</p>
+              </div>
+            </div>
+          </div>
         </div>
-      </div>
 
-      <div class="controls">
-        <button onclick="markAnswer(true)" id="correctBtn" aria-label="Mark as correct">✔ Correct</button>
-        <button onclick="markAnswer(false)" id="wrongBtn" aria-label="Mark as wrong">✖ Wrong</button>
-      </div>
-    </section>
-    <div id="resultsContainer" style="display: none;"></div>
+        <div class="panel" style="margin-top:16px">
+          <h3 style="margin:0 0 10px 0;color:var(--accent);font-family:Orbitron">Contact & Links</h3>
+          <p style="color:var(--muted);margin-bottom:10px">Email: <a href="mailto:Squidly0208@gmail.com" style="color:var(--primary)">Squidly0208@gmail.com</a></p>
+          <p style="color:var(--muted);margin-bottom:8px">GitHub: <a href="https://github.com/squidly0208" target="_blank" style="color:var(--primary)">github.com/squidly0208</a></p>
+          <p style="color:var(--muted);margin-top:8px">Available for freelance, research collaborations and part‑time opportunities.</p>
+        </div>
+      </section>
 
-  </main>
+      <aside class="aside">
+        <div id="experience" class="card">
+          <h3>Experience</h3>
+          <div class="timeline">
+            <div class="tl-item">
+              <div class="role">Software Engineer level 2 — SAPHI Engineering</div>
+              <div class="meta">2023 – Present</div>
+              <div style="color:var(--muted);margin-top:6px;font-size:14px">Worked and completed an internship at a leading tech-agnostic solution provider in Newcastle; collaborated on production systems and industry projects.</div>
+            </div>
 
-  <div id="toast" class="toast" role="alert" aria-live="assertive"></div>
+            <div class="tl-item">
+              <div class="role">Freelance Software Developer — Big Picture Education</div>
+              <div class="meta">2025</div>
+              <div style="color:var(--muted);margin-top:6px;font-size:14px">Built a Java application to help teachers and students track progress and goals.</div>
+            </div>
 
-  <script src="script.js"></script>
+            <div class="tl-item">
+              <div class="role">Big Picture Education Intern — University of Newcastle</div>
+              <div class="meta">2023 – 2024</div>
+              <div style="color:var(--muted);margin-top:6px;font-size:14px">Collaborated with academic staff on research-led projects and accessibility-focused solutions.</div>
+            </div>
+
+            <div class="tl-item">
+              <div class="role">School Based Intern — NuBots</div>
+              <div class="meta">2024</div>
+              <div style="color:var(--muted);margin-top:6px;font-size:14px">Shadowed robotics engineers – learned core robotics concepts.</div>
+            </div>
+
+            <div class="tl-item">
+              <div class="role">School Based Intern — RedCrow</div>
+              <div class="meta">2024</div>
+              <div style="color:var(--muted);margin-top:6px;font-size:14px">Worked on testing and reported multiple production bugs.</div>
+            </div>
+
+            <div class="tl-item">
+              <div class="role">School Based Intern — Clickk Newcastle</div>
+              <div class="meta">2022</div>
+              <div style="color:var(--muted);margin-top:6px;font-size:14px">Designed & developed websites; learned industry best practices.</div>
+            </div>
+
+          </div>
+        </div>
+
+        <div id="quotes" class="card">
+          <h3>Quotes & Recommendations</h3>
+          <div class="quotes">
+            <div class="quote">"Lucas is a rare kind of student, motivated, innovative, and determined to make a positive impact on the world around him. ... I look forward to seeing his education and career prosper."<span class="who">— Dr. Jacqueline D Bailey, Lecturer, The University of Newcastle</span></div>
+
+            <div class="quote">"Lucas was an absolute pleasure to deal with. He assisted us with some website and graphic design tasks. He performed them to a very high standard..."<span class="who">— Chris Chapman, Director, Clickk Pty Ltd</span></div>
+
+            <div class="quote">"Lucas is a talented future engineer with a bright future ahead. He has a passion for technology and it shows!"<span class="who">— Liam, CCO of SAPHI Engineering</span></div>
+
+            <div class="quote">"As Lucas’s teacher when he began his journey in project-based learning, I had the pleasure of seeing him demonstrate incredible adaptability..."<span class="who">— Thomas Deane, Head Teacher of Well Being, Newcastle High School</span></div>
+
+            <div class="quote">"Lucas contributed an interactive javascript module for the Big Picture Learning Australia's website... Lucas is the kind of student who clearly demonstrates the effectiveness of the Big Picture Learning design to help students thrive."<span class="who">— Joe Wickert, CTO Big Picture Learning Australia</span></div>
+
+            <div class="quote">"I met Lucas when he was a high school student conducting a project under the Big Picture program... Lucas has demonstrated deep knowledge of both the hardware and software for the project."<span class="who">— Dr. Alexandre Mendes, Senior Lecturer, The University of Newcastle</span></div>
+
+            <div class="quote">"Lucas’s willingness to help and support others, strive for personal excellence and take on feedback make him an excellent learner..."<span class="who">— Nick Willis, Ex Deputy Campus Leader, Cooks Hill Campus</span></div>
+
+          </div>
+        </div>
+
+      </aside>
+    </main>
+
+    <footer>© 2025 Lucas • Squidly0208 — Built with curiosity and code • Designed for accessibility</footer>
+  </div>
+
+  <script>
+    // small enhancement: highlight nav when scrolled
+    const links = document.querySelectorAll('.nav-link');
+    const sections = ['about','skills','projects','experience','quotes'];
+    window.addEventListener('scroll', ()=>{
+      for(let id of sections){
+        const el = document.getElementById(id);
+        if(!el) continue;
+        const rect = el.getBoundingClientRect();
+        const btn = [...links].find(b=>b.textContent.toLowerCase().includes(id));
+        if(rect.top < 120 && rect.bottom > 120){
+          if(btn) btn.style.color = 'var(--primary)';
+        } else { if(btn) btn.style.color = '' }
+      }
+    });
+  </script>
 </body>
 </html>
