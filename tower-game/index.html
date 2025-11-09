@@ -1,0 +1,770 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Monster Battles — Pixel Retro (Pure Canvas)</title>
+  <style>
+    /* =====================
+       PIXEL RETRO STYLES
+       ===================== */
+    :root{
+      --bg:#0d0f14;
+      --panel:#111622;
+      --panel-2:#0a0e16;
+      --ink:#e7f6ff;
+      --accent:#3fe083;
+      --accent-2:#35b0e6;
+      --hp:#ff4d4f;
+      --xp:#6f87ff;
+      --yellow:#ffd166;
+      --grey:#7f8aa1;
+    }
+    html,body{ height:100%; }
+    body{
+      margin:0; background:linear-gradient(#0a0d13,#04070b 60%); color:var(--ink);
+      font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+      display:grid; place-items:center;
+    }
+    .frame{ width:min(960px,96vw); aspect-ratio:16/9; background:var(--panel); border:4px solid #000; box-shadow:0 0 0 8px #1d2333 inset, 0 12px 40px #0009; position:relative; overflow:hidden; border-radius:12px }
+
+    /* Top HUD */
+    .hud{ position:absolute; inset:0; pointer-events:none; }
+    .hud .title{ position:absolute; left:12px; top:8px; font-weight:700; letter-spacing:1px; text-shadow:0 2px 0 #0008 }
+    .hud .chip{ position:absolute; right:12px; top:8px; background:var(--panel-2); border:2px solid #000; padding:4px 8px; border-radius:8px; box-shadow:0 2px 0 #0008; display:flex; gap:8px; align-items:center; }
+    .chip .dot{ width:10px; height:10px; background:var(--accent); border:2px solid #000; border-radius:50%; box-shadow:0 2px 0 #0008 }
+
+    /* Canvas */
+    canvas{ position:absolute; inset:0; width:100%; height:100%; image-rendering: pixelated; image-rendering: crisp-edges; }
+
+    /* Bottom Panel */
+    .panel{ position:absolute; left:0; right:0; bottom:0; height:38%; background:linear-gradient(180deg, #0c1320, #0a0e16 60%); border-top:4px solid #000; display:grid; grid-template-columns: 1fr 1fr; gap:0; }
+
+    .log{ grid-column:1 / 3; height:48%; padding:8px 12px; display:flex; align-items:center; gap:8px; border-bottom:4px solid #000; background:linear-gradient(180deg, #0b1322, #0a0f1a); }
+    .log .caret{ width:12px; height:12px; border:2px solid var(--yellow); transform:rotate(45deg); box-shadow:0 2px 0 #0008 }
+    .log .text{ font-size:14px; line-height:1.4; color:#e8f0ff; text-shadow:0 1px 0 #000 }
+
+    .moves{ display:grid; grid-template-columns: 1fr 1fr; grid-template-rows: 1fr 1fr; gap:8px; padding:10px; }
+    .moves button{ all:unset; pointer-events:auto; cursor:pointer; background:#121a2b; border:3px solid #000; border-radius:10px; box-shadow:0 3px 0 #0008; padding:10px; display:flex; flex-direction:column; gap:6px; transition:transform .06s ease; }
+    .moves button:hover{ transform:translateY(-2px); }
+    .moves .name{ font-weight:800; letter-spacing:.5px; }
+    .moves .meta{ font-size:12px; color:var(--grey) }
+
+    .menu{ border-left:4px solid #000; padding:10px; display:flex; flex-direction:column; gap:8px; }
+    .menu .row{ display:flex; gap:8px; }
+    .menu button, .menu .toggle{
+      all:unset; pointer-events:auto; cursor:pointer; background:#121a2b; border:3px solid #000; border-radius:10px; box-shadow:0 3px 0 #0008; padding:10px 12px; font-weight:700; display:flex; align-items:center; gap:8px;
+    }
+    .menu .small{ font-size:12px; color:var(--grey); }
+
+    /* Selection overlay */
+    .select{ position:absolute; inset:0; background:#0008; display:none; align-items:center; justify-content:center; }
+    .select .card{ background:#0f1626; border:4px solid #000; padding:14px; width:min(720px, 92%); box-shadow:0 12px 40px #000a; border-radius:12px }
+    .grid{ display:grid; grid-template-columns:repeat(3, 1fr); gap:10px; margin-top:10px; }
+    .can-card{ background:#0c1320; border:3px solid #000; border-radius:10px; padding:10px; display:flex; gap:10px; align-items:center; cursor:pointer; box-shadow:0 3px 0 #0008 }
+    .can-meta{ display:flex; flex-direction:column; gap:4px; font-size:12px; color:#a9b6d3 }
+
+    .bar{ height:10px; border:2px solid #000; background:#09101a; border-radius:8px; overflow:hidden }
+    .bar > i{ display:block; height:100%; background:linear-gradient(90deg,var(--hp),#ff7a7c); }
+    .xpbar > i{ background:linear-gradient(90deg,var(--xp),#9fb2ff); }
+
+    .stat-chip{ background:#0a0f1a; border:2px solid #000; padding:2px 6px; border-radius:6px; font-size:12px; }
+
+    .tip{ position:absolute; left:12px; bottom:calc(38% + 8px); font-size:12px; color:#9fb2ff; opacity:.9 }
+  .crt{position:absolute;inset:0;pointer-events:none;mix-blend-mode:soft-light;opacity:.25;background:repeating-linear-gradient(0deg,rgba(255,255,255,.08) 0px, rgba(255,255,255,.08) 1px, transparent 2px, transparent 3px)}
+.pixel-border{box-shadow:0 0 0 4px #000,0 0 0 8px #1b2233 inset}
+.button-8{border-radius:8px}
+
+</style>
+</head>
+<body>
+  <div class="frame" id="frame">
+    <canvas id="game" width="320" height="180"></canvas>
+
+    <div class="hud">
+      <div class="title">MONSTER BATTLES · PIXEL EDITION</div>
+      <div class="chip"><span class="dot"></span> <span id="hudChip">v0.1 · Floor 1</span></div>
+    </div>
+    <div class="crt"></div>
+
+    <div class="tip">Use 1–4 to pick moves · Press R to retry · S to save</div>
+
+    <section class="panel">
+      <div class="log">
+        <div class="caret"></div>
+        <div class="text" id="log">Welcome! Choose your can…</div>
+      </div>
+      <div class="moves" id="moves"></div>
+      <aside class="menu">
+        <div class="row">
+          <button id="btnRetry">↻ Retry</button>
+          <button id="btnSettings">⚙️ Settings</button>
+          <button id="btnBag">🎒 Bag</button>
+          <button id="btnTeam">👥 Team</button>
+          <button id="btnItems">📦 Items</button>
+          <button id="btnTraining">🏋️ Training</button>
+        </div>
+        <div class="row">
+          <button id="btnSave">💾 Save</button>
+          <button id="btnRun">🏃 Run</button>
+        </div>
+        <div class="row">
+          <div class="toggle" id="btnFast">⚡ Fast text: <span id="fastState">OFF</span></div>
+        </div>
+        <div class="small">
+          Party slots: <span id="partyCount">0</span> · Wins: <span id="wins">0</span>
+        </div>
+      </aside>
+    </section>
+
+    <!-- ==== OVERLAY MODALS (A‑mode) ==== -->
+    <div class="select" id="ovSettings"><div class="card">
+      <strong>SETTINGS</strong>
+      <div style="margin-top:10px; display:grid; gap:8px; font-size:14px">
+        <label><input type="checkbox" id="setFast"> Fast Text</label>
+        <label>Music Volume <input type="range" id="setMusic" min="0" max="100" value="50"></label>
+        <label>SFX Volume <input type="range" id="setSFX" min="0" max="100" value="50"></label>
+        <label>Difficulty
+          <select id="setDiff">
+            <option>Easy</option>
+            <option selected>Normal</option>
+            <option>Hard</option>
+          </select>
+        </label>
+        <button style="margin-top:12px" id="setClose">Close</button>
+      </div>
+    </div></div>
+
+    <div class="select" id="ovBag"><div class="card">
+      <strong>BAG (ITEMS)</strong>
+      <div id="bagList" style="margin-top:10px"></div>
+      <button style="margin-top:12px" id="bagClose">Close</button>
+    </div></div>
+
+    <div class="select" id="ovTeam"><div class="card">
+      <strong>TEAM</strong>
+      <div id="teamList" style="margin-top:10px"></div>
+      <button style="margin-top:12px" id="teamClose">Close</button>
+    </div></div>
+
+    <div class="select" id="ovTraining"><div class="card">
+      <strong>TRAINING</strong>
+      <div style="margin-top:10px; display:grid; gap:8px; font-size:14px">
+        <button id="trainDummy">Dummy XP battle</button>
+        <button id="trainStats">Stat training</button>
+        <button id="trainClose" style="margin-top:12px">Close</button>
+      </div>
+    </div></div>
+
+    <div class="select" id="ovPost"><div class="card">
+      <strong>BATTLE CLEAR</strong>
+      <div id="postSummary" class="small" style="margin:8px 0 12px"></div>
+      <div style="display:flex;flex-wrap:wrap;gap:8px">
+        <button id="btnNext">Next Floor →</button>
+        <button id="btnReplay">Train on this Floor</button>
+        <button id="postClose">Close</button>
+      </div>
+    </div></div>
+
+    <div class="select" id="select">
+      <div class="card">
+        <div style="display:flex;justify-content:space-between;align-items:center;gap:10px;flex-wrap:wrap">
+          <strong>Select your starter (pixel cans)</strong>
+          <div class="small">Everything is pixel art. Extendable via <code>FLAVORS</code> & <code>MOVES</code>.</div>
+        </div>
+        <div class="grid" id="starterGrid"></div>
+      </div>
+    </div>
+  </div>
+
+<script>
+/**
+ * MONSTER BATTLES — Pure Canvas, Pixel Style (everything pixel, no photo cans)
+ * Scope C: start with battle core, easy to expand later
+ *
+ * Files-in-one for demo. To split later:
+ *  - index.html (this)
+ *  - /css/styles.css
+ *  - /js/data.js (FLAVORS, MOVES)
+ *  - /js/battle.js
+ *  - /js/main.js
+ */
+
+/***** DATA: MOVES *****/
+const MOVES = {
+  FIZZ:    { name:'FIZZ', power:18, acc:100, type:'Neutral', kind:'phys', desc:'Basic fizzy bop.' },
+  BURST:   { name:'CAFFEINE BURST', power:24, acc:90, type:'Neutral', kind:'spec', desc:'A jittery jolt.' },
+  SUGAR:   { name:'SUGAR RUSH', power:20, acc:95, type:'Sweet', kind:'spec', desc:'Sweet blast.' },
+  ZERO:    { name:'ZERO BITE', power:16, acc:100, type:'Ultra', kind:'phys', desc:'Ultra-light jab.' },
+  PUNCH:   { name:'PUNCH', power:28, acc:85, type:'Juice', kind:'phys', desc:'Fruity wallop.' },
+  REHAB:   { name:'REHAB SIP', power:0,  acc:100, type:'Rehab', kind:'status', heal:22, desc:'Recover HP.' },
+  CHILL:   { name:'CHILL', power:0,  acc:90, type:'Ultra', kind:'status', debuff:{stat:'atk', by:4}, desc:'Lower foe ATK.' },
+  SPARK:   { name:'SPARKLE', power:22, acc:92, type:'Neutral', kind:'spec', desc:'Glitter pop.' },
+  DREAM:   { name:'DREAM SWIRL', power:26, acc:88, type:'Reserve', kind:'spec', desc:'Creamy beam.' },
+  MANGO:   { name:'MANGO LASH', power:25, acc:90, type:'Juice', kind:'spec', desc:'Tropical zaps.' },
+};
+
+/***** DATA: TYPE CHART (simple) *****/
+const TYPES = ['Neutral','Ultra','Juice','Sweet','Rehab','Reserve'];
+const TYPE_CHART = {
+  Neutral: { Ultra:1, Juice:1, Sweet:1, Rehab:1, Reserve:1, Neutral:1 },
+  Ultra:   { Neutral:1.1, Juice:1, Sweet:1.2, Rehab:0.9, Reserve:1, Ultra:1 },
+  Juice:   { Neutral:1, Ultra:1.1, Sweet:0.9, Rehab:1, Reserve:1.2, Juice:1 },
+  Sweet:   { Neutral:1, Ultra:0.9, Juice:1.1, Rehab:1.2, Reserve:1, Sweet:1 },
+  Rehab:   { Neutral:1, Ultra:1.1, Juice:1, Sweet:0.9, Reserve:1, Rehab:1 },
+  Reserve: { Neutral:1.2, Ultra:1, Juice:0.9, Sweet:1, Rehab:1.1, Reserve:1 },
+};
+
+/***** DATA: CANS (pixel art colors + learnsets) *****/
+const FLAVORS = [
+  {
+    id:'original', name:'Original', type:'Neutral', palette:['#1a1a1a','#2a2a2a','#1ad500'],
+    base:{ hp:78, atk:18, def:14, spd:12 }, moves:['FIZZ','BURST','SPARK','REHAB']
+  },
+  {
+    id:'ultra', name:'Zero Ultra', type:'Ultra', palette:['#e8e8ea','#cfd2d6','#111'],
+    base:{ hp:68, atk:14, def:16, spd:20 }, moves:['ZERO','FIZZ','CHILL','SPARK']
+  },
+  {
+    id:'mangoLoco', name:'Mango Loco', type:'Juice', palette:['#14b8a6','#0ea5a3','#ffb703'],
+    base:{ hp:72, atk:16, def:12, spd:18 }, moves:['PUNCH','MANGO','SUGAR','REHAB']
+  },
+  {
+    id:'rosa', name:'Ultra Rosa', type:'Ultra', palette:['#f7a1c6','#f280ad','#222'],
+    base:{ hp:66, atk:16, def:14, spd:22 }, moves:['ZERO','CHILL','SPARK','SUGAR']
+  },
+  {
+    id:'dream', name:'Strawberry Dreams', type:'Reserve', palette:['#f38ba8','#f2b5c3','#2a2030'],
+    base:{ hp:70, atk:15, def:16, spd:16 }, moves:['DREAM','SUGAR','FIZZ','REHAB']
+  },
+  {
+    id:'rehab', name:'Rehab Lemonade', type:'Rehab', palette:['#ffe28a','#ffd166','#282618'],
+    base:{ hp:84, atk:12, def:18, spd:10 }, moves:['REHAB','FIZZ','SPARK','PUNCH']
+  },
+];
+
+/***** SAVE / LOAD *****/
+/* SPRITES (SVG) */
+const CAN_SVG_PATH = 'assets/svg/cans/'; // ➜ put your SVGs here
+const SPRITES = {}; // id -> HTMLImageElement
+function preloadSVGs(){
+  FLAVORS.forEach(fl=>{
+    const img = new Image();
+    img.src = `${CAN_SVG_PATH}${fl.id}.svg`;
+    SPRITES[fl.id] = img;
+  });
+}
+
+function drawCanAny(x,y,scale, flavor){
+  const img = SPRITES[flavor.id];
+  if(img && img.complete && img.naturalWidth>0){
+    const targetH = 30*scale;
+    const ar = img.naturalWidth / img.naturalHeight;
+    const w = targetH * ar;
+    const h = targetH;
+    ctx.globalAlpha=0.25; ctx.fillStyle='#000'; ctx.fillRect(x-2*scale, y-2*scale, w+4*scale, 3*scale); ctx.globalAlpha=1;
+    ctx.imageSmoothingEnabled = false;
+    ctx.drawImage(img, x, y-h, w, h);
+    return;
+  }
+ 
+  // fallback to procedural pixel can if SVG missing/not loaded yet
+  drawCan(x,y,scale, flavor.palette);
+}
+
+const SAVE_KEY = 'monster_battles_px';
+function saveState(state){ localStorage.setItem(SAVE_KEY, JSON.stringify(state)); }
+function loadState(){ try{ return JSON.parse(localStorage.getItem(SAVE_KEY)||'null'); }catch{ return null; } }
+
+/***** UTILITIES *****/
+const clamp=(v,a,b)=>Math.max(a,Math.min(b,v));
+const randi=(a,b)=>Math.floor(Math.random()*(b-a+1))+a;
+const chance=p=>Math.random()*100 < p;
+function typeMult(moveType, targetType){
+  const t = (TYPE_CHART[moveType]||{})[targetType];
+  return t||1;
+}
+
+/***** BATTLE ENTITIES *****/
+class Fighter{
+  constructor(flavor, lvl=5){
+    this.flavor = flavor; // reference
+    this.level = lvl;
+    const b=flavor.base;
+    this.maxhp = Math.floor(b.hp + lvl*4);
+    this.hp = this.maxhp;
+    this.atk = Math.floor(b.atk + lvl*1.5);
+    this.def = Math.floor(b.def + lvl*1.3);
+    this.spd = Math.floor(b.spd + lvl*1.4);
+    this.status = null; // { type:'stun'|'burn', turns:n }
+    this.xp = 0;
+    this.evoStage = 1; // 1 -> 2 -> 3
+  }
+  alive(){ return this.hp>0; }
+}
+
+function levelUp(f){
+  f.level += 1;
+  f.maxhp += 4; f.hp = f.maxhp;
+  f.atk += 2; f.def += 2; f.spd += 2;
+  if(f.level===10 || f.level===20){ f.evoStage++; }
+  flashLog(`${f.flavor.name} grew to Lv ${f.level}!`);
+}
+function gainXP(f, amount){
+  f.xp += amount;
+  while(f.xp >= f.level*20){ f.xp -= f.level*20; levelUp(f); }
+}
+
+/***** RENDERER: Pixel cans *****/
+const canvas = document.getElementById('game');
+const ctx = canvas.getContext('2d');
+ctx.imageSmoothingEnabled = false;
+
+function clear(){ ctx.fillStyle = '#0b0f19'; ctx.fillRect(0,0,canvas.width,canvas.height); }
+
+function drawBackdrop(t){
+  // Simple parallax grid + floating particles
+  ctx.fillStyle = '#0d1424';
+  ctx.fillRect(0,0,320,112);
+  // Horizon gradient
+  const grd = ctx.createLinearGradient(0,60,0,120);
+  grd.addColorStop(0,'#0e1931'); grd.addColorStop(1,'#0a101e');
+  ctx.fillStyle = grd; ctx.fillRect(0,60,320,80);
+  // Grid lines
+  ctx.strokeStyle = '#1b2a4a';
+  ctx.globalAlpha = .6; ctx.lineWidth=1;
+  for(let x=0;x<320;x+=8){ ctx.beginPath(); ctx.moveTo(x,100); ctx.lineTo(x,180); ctx.stroke(); }
+  for(let y=100;y<180;y+=8){ ctx.beginPath(); ctx.moveTo(0,y); ctx.lineTo(320,y); ctx.stroke(); }
+  ctx.globalAlpha = 1;
+}
+
+function drawCan(x,y,scale, pal){
+  const s = scale;
+  // drop shadow
+  ctx.globalAlpha=0.25; ctx.fillStyle='#000'; ctx.fillRect(x-2*s, y-2*s, 16*s, 3*s); ctx.globalAlpha=1;
+  // body + outline
+  ctx.fillStyle = pal[0]; ctx.fillRect(x, y-30*s, 12*s, 30*s);
+  ctx.strokeStyle='#000'; ctx.lineWidth=1; ctx.strokeRect(x+0.5, y-30*s+0.5, 12*s-1, 30*s-1);
+  // side shade + highlight
+  ctx.fillStyle = pal[1]; ctx.fillRect(x+9*s, y-30*s, 3*s, 30*s);
+  ctx.fillStyle = 'rgba(255,255,255,0.12)'; ctx.fillRect(x+2*s, y-30*s, 2*s, 30*s);
+  // top ring + tab
+  ctx.fillStyle = '#c9ced6'; ctx.fillRect(x-1*s, y-32*s, 14*s, 2*s);
+  ctx.fillStyle = '#9aa3ad'; ctx.fillRect(x+4*s, y-34*s, 4*s, 2*s);
+  // claw logo (triple jagged stripes)
+  ctx.fillStyle = pal[2];
+  const y0 = y-24*s;
+  for(let k=0;k<3;k++){
+    const off = k*3*s;
+    ctx.fillRect(x+3*s, y0+off, 6*s, 1*s);
+    ctx.fillRect(x+2*s, y0+1*s+off, 8*s, 1*s);
+    ctx.fillRect(x+3*s, y0+2*s+off, 6*s, 1*s);
+  }
+  // rim light
+  ctx.fillStyle='rgba(255,255,255,0.2)'; ctx.fillRect(x+11*s, y-30*s, 1*s, 30*s);
+}
+
+function drawHUD(f, top){
+  const x = top? 320-152: 8, y = top? 6: 92;
+  ctx.fillStyle = '#0a0f1a'; ctx.fillRect(x, y, 144, 38);
+  ctx.strokeStyle = '#000'; ctx.lineWidth=2; ctx.strokeRect(x, y, 144, 38);
+  ctx.fillStyle = '#e7f6ff'; ctx.fillText(f.flavor.name, x+6, y+10);
+  ctx.fillText('Lv'+f.level, x+112, y+10);
+  // HP bar
+  const hpw = Math.floor(110 * (f.hp / f.maxhp));
+  ctx.fillStyle = '#9fb2ff'; ctx.fillText('HP', x+6, y+22);
+  ctx.fillStyle = '#09101a'; ctx.fillRect(x+20, y+16, 110, 8);
+  ctx.fillStyle = '#ff4d4f'; ctx.fillRect(x+20, y+16, clamp(hpw,0,110), 8);
+  ctx.strokeStyle = '#000'; ctx.strokeRect(x+20, y+16, 110, 8);
+  // XP bar
+  const need = f.level*20; const xpPct = clamp(Math.floor(110*(f.xp/need)),0,110);
+  ctx.fillStyle = '#9fb2ff'; ctx.fillRect(x+20, y+26, 110, 6);
+  ctx.fillStyle = '#6f87ff'; ctx.fillRect(x+20, y+26, xpPct, 6);
+  ctx.strokeStyle = '#000'; ctx.strokeRect(x+20, y+26, 110, 6);
+}
+
+/***** GAME STATE *****/
+const state = {
+  bag:{ small:5, medium:3, ultra:1 },
+  player:null,
+  enemy:null,
+  turn:"player",
+  fast:false,
+  wins:0,
+  diff:'Normal',
+  vol:{ music:0.5, sfx:0.5 },
+  party:[/* Fighter */],
+  floor:1,
+};
+
+/***** UI HOOKS *****/
+const logEl = document.getElementById('log');
+const movesEl = document.getElementById('moves');
+const selectEl = document.getElementById('select');
+const starterGrid = document.getElementById('starterGrid');
+const partyCountEl = document.getElementById('partyCount');
+const winsEl = document.getElementById('wins');
+const fastState = document.getElementById('fastState');
+
+document.getElementById('btnRetry').onclick=()=>startBattle();
+
+document.getElementById('btnSave').onclick=()=>{
+  saveState({
+    wins:state.wins,
+    party:[state.player, ...state.party].map(f=>({ id:f.flavor.id, lvl:f.level, hp:f.hp, xp:f.xp })) ,
+    floor: state.floor,
+    diff: state.diff,
+    bag: state.bag
+  });
+  flashLog('Saved progress.');
+};
+
+document.getElementById('btnFast').onclick=()=>{
+  state.fast=!state.fast; fastState.textContent= state.fast? 'ON':'OFF';
+};
+
+// ==== OVERLAY STATE ====
+state.overlayOpen=false;
+const overlays={settings:ovSettings, bag:ovBag, team:ovTeam, training:ovTraining};
+function openOverlay(k){ state.overlayOpen=true; overlays[k].style.display='flex'; }
+function closeOverlay(k){ overlays[k].style.display='none'; state.overlayOpen=false; }
+// buttons
+btnSettings.onclick=()=>{ syncSettingsUI(); openOverlay('settings'); };
+bagClose.onclick=()=>closeOverlay('bag');
+btnBag.onclick=()=>{ renderBag(); openOverlay('bag'); };
+teamClose.onclick=()=>closeOverlay('team');
+btnTeam.onclick=()=>{ renderTeam(); openOverlay('team'); };
+trainClose.onclick=()=>closeOverlay('training');
+btnTraining.onclick=()=>openOverlay('training');
+trainDummy.onclick=()=>{ startDummyBattle(); closeOverlay('training'); };
+trainStats.onclick=()=>{ applyStatTraining(state.player); flashLog('Training complete! Stats increased.'); closeOverlay('training'); };
+setClose.onclick=()=>closeOverlay('settings');
+btnItems.onclick=()=>{ renderBag(); openOverlay('bag'); };
+btnRun.onclick=()=>{
+  if(!state.enemy||!state.player) return;
+  const flee = state.diff==='Hard'? 0.5 : state.diff==='Easy'? 0.9 : 0.7;
+  if(Math.random()<flee){
+    flashLog('You got away safely!');
+    postSummary.textContent = `Escaped from ${state.enemy.flavor.name}. Replay Floor ${state.floor} or try next?`;
+    openOverlay('post');
+  } else {
+    flashLog('Could not escape!');
+    enemyFreeHit();
+  }
+};
+// post-battle overlay buttons
+postClose.onclick=()=>closeOverlay('post');
+btnReplay.onclick=()=>{ closeOverlay('post'); startBattle(); };
+btnNext.onclick=()=>{ state.floor++; closeOverlay('post'); state.player.hp=state.player.maxhp; startBattle(); };
+// render bag list
+function renderBag(){
+  bagList.innerHTML='';
+  let any=false;
+  for(const k of ['small','medium','ultra']){
+    const c=state.bag[k]; if(!c) continue; any=true;
+    const div=document.createElement('div');
+    div.className='can-card';
+    div.innerHTML=`<div style="min-width:140px;font-weight:700">${k.toUpperCase()} POTION</div><div class="can-meta">Heals ${ITEM_HEAL[k]} HP · x${c}</div>`;
+    div.onclick=()=>{
+      if(!state.player.alive()) return;
+      state.player.hp=Math.min(state.player.maxhp, state.player.hp+ITEM_HEAL[k]);
+      state.bag[k]--;
+      renderBag(); // refresh counts
+      closeOverlay('bag'); // mode A
+      logEl.textContent=`Used ${k} potion!`;
+    };
+    bagList.appendChild(div);
+  }
+  if(!any){ bagList.textContent='(Bag is empty)'; }
+}
+
+// TEAM overlay
+function renderTeam(){
+  teamList.innerHTML='';
+  const info=document.createElement('div');
+  info.className='small';
+  const inBattle = state.enemy && state.player && state.player.alive() && state.enemy.alive();
+  info.textContent = inBattle? 'Cannot swap while in battle.': 'Click a party member to set as lead.';
+  teamList.appendChild(info);
+
+  const all=[state.player, ...state.party];
+  all.forEach((f,i)=>{
+    if(!f) return;
+    const row=document.createElement('div'); row.className='can-card';
+    const hpPct = Math.round(100*(f.hp/f.maxhp));
+    row.innerHTML = `<div style=\"min-width:140px;font-weight:700\">${i===0?'[LEAD] ':''}${f.flavor.name}${f.evoStage>1? ' Ⅲ'.slice(0,f.evoStage):''}</div>
+                     <div class=\"can-meta\">Lv ${f.level} · HP ${hpPct}% · ATK ${f.atk} DEF ${f.def} SPD ${f.spd}</div>`;
+    if(!inBattle && i>0){
+      row.onclick=()=>{ const oldLead=state.player; state.player=all[i]; all[i]=oldLead; state.party=[...all.slice(1)]; renderTeam(); flashLog(`${state.player.flavor.name} is now the lead!`); };
+    }
+    if(inBattle && i>0){
+      row.onclick=async()=>{ const oldLead=state.player; state.player=all[i]; all[i]=oldLead; state.party=[...all.slice(1)]; renderTeam(); closeOverlay('team'); await flashLog(`${state.player.flavor.name} swapped in!`); await enemyFreeHit(); };
+    }
+    teamList.appendChild(row);
+  });
+}
+
+// SETTINGS sync
+function syncSettingsUI(){
+  setFast.checked = state.fast;
+  setMusic.value = Math.round(state.vol.music*100);
+  setSFX.value = Math.round(state.vol.sfx*100);
+  setDiff.value = state.diff;
+}
+setFast.onchange = ()=>{ state.fast = setFast.checked; fastState.textContent= state.fast? 'ON':'OFF'; };
+setMusic.oninput = ()=>{ state.vol.music = parseInt(setMusic.value,10)/100; };
+setSFX.oninput = ()=>{ state.vol.sfx = parseInt(setSFX.value,10)/100; };
+setDiff.onchange = ()=>{ state.diff = setDiff.value; };
+
+// block moves when overlay
+function chooseMove(i){ if(state.overlayOpen||state.turn!=='player') return; state.turn='busy'; doTurn(i).then(()=>{ state.turn='player'; }); }
+
+window.addEventListener('keydown', (e)=>{
+  if(['1','2','3','4'].includes(e.key)) chooseMove(parseInt(e.key)-1);
+  if(e.key==='r' || e.key==='R') startBattle();
+  if(e.key==='s' || e.key==='S') document.getElementById('btnSave').click();
+  if(e.key==='Escape') { for(const k in overlays){ overlays[k].style.display='none'; } state.overlayOpen=false; }
+});
+
+
+/***** LOGGING *****/
+let logBusy=false;
+async function flashLog(text){
+  if(state.fast){ logEl.textContent = text; return; }
+  logBusy=true; logEl.textContent='';
+  for(let i=0;i<text.length;i++){
+    logEl.textContent += text[i];
+    await new Promise(r=>setTimeout(r,10));
+  }
+  logBusy=false;
+}
+
+/***** MOVE CHOICE RENDER *****/
+function renderMoves(){
+  movesEl.innerHTML='';
+  const mvNames = state.player.flavor.moves;
+  mvNames.slice(0,4).forEach((mvName,idx)=>{
+    const m = MOVES[mvName];
+    const b = document.createElement('button');
+    b.innerHTML = `<div class="name">${m.name}</div>
+                   <div class="meta">${m.type} · ${m.kind.toUpperCase()} · Pow ${m.power||0} · Acc ${m.acc}%</div>`;
+    b.onclick=()=>chooseMove(idx);
+    movesEl.appendChild(b);
+  });
+}
+
+/***** BATTLE LOOP *****/
+function calcDamage(move, atk, def, atkType, defType){
+  if(move.power===0) return 0;
+  const base = Math.floor((atk / Math.max(1,def)) * move.power * 0.9 + randi(0,3));
+  const mult = typeMult(move.type, defType);
+  const crit = chance(8)? 1.5:1;
+  return Math.floor(base * mult * crit);
+}
+
+async function doTurn(moveIdx){
+  const p = state.player, e = state.enemy;
+  const pm = MOVES[p.flavor.moves[moveIdx]];
+  const em = MOVES[e.flavor.moves[randi(0, e.flavor.moves.length-1)]];
+
+  const firstPlayer = p.spd>=e.spd;
+
+  async function act(att,def,mv,isPlayer){
+    if(!att.alive()||!def.alive()) return;
+
+    if(mv.kind==='status'){
+      if(mv.heal){
+        const heal = mv.heal;
+        const before=att.hp; att.hp = clamp(att.hp+heal, 0, att.maxhp);
+        await flashLog(`${att.flavor.name} sips ${mv.name} and heals ${att.hp-before} HP!`);
+      } else if(mv.debuff){
+        await flashLog(`${att.flavor.name} used ${mv.name}! ${def.flavor.name}'s ${mv.debuff.stat.toUpperCase()} fell!`);
+        if(mv.debuff.stat==='atk') def.atk = Math.max(1, def.atk - mv.debuff.by);
+      } else {
+        await flashLog(`${att.flavor.name} used ${mv.name}!`);
+      }
+      return;
+    }
+
+    if(!chance(mv.acc)){
+      await flashLog(`${att.flavor.name}'s ${mv.name} missed!`); return;
+    }
+
+    const dmg = calcDamage(mv, att.atk, def.def, att.flavor.type, def.flavor.type);
+    def.hp = Math.max(0, def.hp - dmg);
+    await flashLog(`${att.flavor.name} used ${mv.name}! It dealt ${dmg} damage.`);
+
+    if(!def.alive()){
+      await flashLog(`${def.flavor.name} fainted!`);
+    }
+  }
+
+  if(firstPlayer){
+    await act(p,e,pm,true);
+    if(e.alive()) await act(e,p,em,false);
+  } else {
+    await act(e,p,em,false);
+    if(p.alive()) await act(p,e,pm,true);
+  }
+
+  if(!p.alive() || !e.alive()){
+    if(p.alive()){
+      state.wins++;
+      winsEl.textContent = state.wins;
+      await flashLog(`Floor ${state.floor} cleared!`);
+      gainXP(p, 15 + e.level*5);
+      if(state.party.length<6){
+        state.party.push(new Fighter(e.flavor, Math.max(3, e.level-1)));
+        partyCountEl.textContent = state.party.length;
+        await flashLog(`${e.flavor.name} joined your party!`);
+      }
+      postSummary.textContent = `You defeated ${e.flavor.name}. Choose: advance to Floor ${state.floor+1} or train more on Floor ${state.floor}.`;
+      openOverlay('post');
+    } else {
+      await flashLog(`You lost… Press R to retry.`);
+    }
+    return;
+  }
+
+  renderMoves();
+}
+
+async function enemyFreeHit(){
+  const e=state.enemy, p=state.player; if(!e||!p||!e.alive()||!p.alive()) return;
+  const em = MOVES[e.flavor.moves[randi(0, e.flavor.moves.length-1)]];
+  if(!chance(em.acc)) { await flashLog(`${e.flavor.name}'s ${em.name} missed!`); return; }
+  const dmg = calcDamage(em, e.atk, p.def, e.flavor.type, p.flavor.type);
+  p.hp = Math.max(0, p.hp - dmg);
+  await flashLog(`${e.flavor.name} strikes as you swap! ${dmg} damage.`);
+}
+
+function chooseMove(i){ if(state.turn!=='player') return; state.turn='busy'; doTurn(i).then(()=>{ state.turn='player'; }); }
+
+/***** START / SETUP *****/
+function makeEnemy(kind){
+  const f = FLAVORS[randi(0, FLAVORS.length-1)];
+  const base = 3 + Math.min(5, Math.floor(state.floor/2));
+  const spread = 2 + Math.floor(state.floor/3);
+  const lvl = clamp(randi(base, base+spread), 1, 50);
+  const foe = new Fighter(f,lvl);
+  // Difficulty scaling (affects enemy stats)
+  const diff = state.diff;
+  const mult = diff==='Easy' ? 0.9 : diff==='Hard' ? 1.15 : 1.0;
+  foe.atk = Math.floor(foe.atk*mult);
+  foe.def = Math.floor(foe.def*mult);
+  foe.spd = Math.floor(foe.spd*mult);
+  foe.maxhp = Math.floor(foe.maxhp*mult); foe.hp = foe.maxhp;
+  if(kind==='dummy'){
+    foe.flavor = { ...foe.flavor, name:'Target Dummy', type:'Neutral', palette:['#222','#333','#666'] };
+    foe.atk = Math.max(5, Math.floor(foe.atk*0.5));
+    foe.def = Math.max(5, Math.floor(foe.def*0.7));
+    foe.spd = Math.max(5, Math.floor(foe.spd*0.7));
+  }
+  return foe;
+}
+
+// === ITEM HEAL VALUES ===
+const ITEM_HEAL={ small:25, medium:50, ultra:100 };
+
+// === STAT TRAINING ===
+function applyStatTraining(f){ f.atk+=1; f.def+=1; f.spd+=1; f.maxhp+=4; f.hp=f.maxhp; }
+
+function startBattle(){
+  state.enemy = makeEnemy();
+  state.player.hp = state.player.maxhp; // heal player each battle for now
+  logEl.textContent = `Floor ${state.floor}: A wild ${state.enemy.flavor.name} appeared!`;
+  document.getElementById('hudChip').textContent = `v0.1 · Floor ${state.floor}`;
+  renderMoves();
+}
+function startDummyBattle(){
+  state.enemy = makeEnemy('dummy');
+  state.player.hp = Math.min(state.player.hp + 10, state.player.maxhp); // small top-up
+  logEl.textContent = `Training starts! ${state.enemy.flavor.name} approaches…`;
+  renderMoves();
+} 
+
+function openStarter(){
+  selectEl.style.display='flex';
+  starterGrid.innerHTML='';
+  FLAVORS.slice(0,6).forEach(fl=>{
+    const el = document.createElement('div'); el.className='can-card';
+    el.innerHTML = `<canvas width="48" height="64"></canvas>
+                    <div class="can-meta">
+                      <strong>${fl.name}</strong>
+                      <span>Type: ${fl.type}</span>
+                      <span>Moves: ${fl.moves.join(', ')}</span>
+                    </div>`;
+    const c = el.querySelector('canvas'); const cx = c.getContext('2d'); cx.imageSmoothingEnabled=false;
+    // draw tiny preview
+    const s=2; drawCanPreview(cx, 16, 56, s, fl.palette, fl.id);
+    el.onclick=()=>{ state.player = new Fighter(fl,5); partyCountEl.textContent = state.party.length; selectEl.style.display='none'; startBattle(); };
+    starterGrid.appendChild(el);
+  });
+}
+
+function drawCanPreview(preCtx, x, y, scale, pal, id){
+  const s = scale;
+  const img = SPRITES[id];
+  if(img && img.complete){
+    preCtx.imageSmoothingEnabled=false;
+    const w = 12*s, h = 30*s;
+    preCtx.drawImage(img, x, y-h, w, h);
+    return;
+  }
+  // fallback tiny pixel draw
+  preCtx.fillStyle = pal[0]; preCtx.fillRect(x, y-28*s, 12*s, 28*s);
+  preCtx.fillStyle = pal[1]; preCtx.fillRect(x+9*s, y-28*s, 3*s, 28*s);
+  preCtx.fillStyle = '#c9ced6'; preCtx.fillRect(x-1*s, y-30*s, 14*s, 2*s);
+  preCtx.fillStyle = '#9aa3ad'; preCtx.fillRect(x+4*s, y-32*s, 4*s, 2*s);
+  preCtx.fillStyle = pal[2];
+  preCtx.fillRect(x+3*s, y-22*s, 6*s, 2*s);
+  preCtx.fillRect(x+2*s, y-20*s, 8*s, 2*s);
+  preCtx.fillRect(x+3*s, y-18*s, 6*s, 2*s);
+}
+
+/***** MAIN RENDER TICK *****/
+let t0=0;
+function draw(ts=0){
+  const dt = (ts - t0)/1000; t0 = ts;
+  clear();
+  drawBackdrop(ts);
+  const bob = Math.sin(ts/400)/2;
+  if(state.player){ drawCanAny(44, 160+bob, 3, state.player.flavor); drawHUD(state.player,false); }
+  if(state.enemy){ drawCanAny(240, 150-bob, 3, state.enemy.flavor); drawHUD(state.enemy,true); }
+  requestAnimationFrame(draw);
+}
+
+/***** BOOT *****/
+(function boot(){
+  preloadSVGs();
+  // Load save
+  const saved = loadState();
+  if(saved){
+    state.wins = saved.wins||0; winsEl.textContent = state.wins;
+    state.floor = saved.floor||1;
+    state.diff = saved.diff||state.diff;
+    state.bag = saved.bag||state.bag;
+    document.getElementById('hudChip').textContent = `v0.1 · Floor ${state.floor}`;
+    if(saved.party && saved.party.length){
+      const first = saved.party[0];
+      const fl = FLAVORS.find(f=>f.id===first.id) || FLAVORS[0];
+      state.player = new Fighter(fl, first.lvl||5);
+      state.player.hp = clamp(first.hp||state.player.maxhp, 1, state.player.maxhp);
+      state.player.xp = first.xp||0;
+      for(let i=1;i<saved.party.length;i++){
+        const sp = saved.party[i]; const f = FLAVORS.find(ff=>ff.id===sp.id)||FLAVORS[0];
+        const ff = new Fighter(f, sp.lvl||4); ff.hp=clamp(sp.hp||ff.maxhp,1,ff.maxhp); ff.xp=sp.xp||0; state.party.push(ff);
+      }
+      partyCountEl.textContent = state.party.length;
+      startBattle();
+    } else {
+      openStarter();
+    }
+  } else {
+    openStarter();
+  }
+  draw();
+})();
+</script>
+</body>
+</html>
