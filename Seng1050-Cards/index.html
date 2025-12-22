@@ -1,55 +1,103 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
-  <title>Flashcards App</title>
-  <link rel="stylesheet" href="style.css" />
-  <link rel="shortcut icon" href="./Images/logo.png" type="image/x-icon">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>SENG1050 Random Test App</title>
+<style>
+    body {
+        font-family: Arial, sans-serif;
+        background-color: #171717;
+        color: white;
+        padding: 20px;
+    }
+    h2 {
+        color: cyan;
+        margin-top: 40px;
+    }
+    h3 {
+        color: magenta;
+        margin-top: 30px;
+    }
+    .question {
+        margin-bottom: 15px;
+    }
+    textarea {
+        width: 100%;
+        min-height: 60px;
+        background-color: #1f1f1f;
+        color: white;
+        border: 1px solid cyan;
+        padding: 8px;
+        resize: vertical;
+    }
+    button {
+        margin-top: 20px;
+        margin-right: 10px;
+        padding: 10px 15px;
+        background-color: cyan;
+        color: #171717;
+        border: none;
+        cursor: pointer;
+        font-weight: bold;
+    }
+</style>
 </head>
 <body>
-  <header>
-    <h1>Flashcards Study App</h1>
-    <div class="theme-toggle">
-      <label>
-        <input type="checkbox" id="themeSwitcher" />
-        Dark Mode
-      </label>
-    </div>
-  </header>
 
-  <main>
-    <section class="filter-container">
-      <select id="subjectSelect" aria-label="Select Subject"></select>
-      <select id="weekSelect" aria-label="Select Week"><option value="">All Weeks</option></select>
-      <select id="categorySelect" aria-label="Select Category"><option value="">All Categories</option></select>
-      <button id="startBtn" aria-label="Start flashcards">Start</button>
-    </section>
+<h1>SENG1050 Random Test App</h1>
+<p>Type your answers in the boxes below. Questions are selected randomly each time the page loads.</p>
 
-    <section class="flashcard-container" id="flashcardContainer" style="display: none;">
-      <div class="progress-wrapper" aria-label="Flashcard progress">
-        <div class="progress-bar" id="progressBar"></div>
-      </div>
-      <div class="card-meta" id="cardCounter" aria-live="polite"></div>
+<div id="test-container"></div>
 
-      <div class="flashcard" id="flashcard" onclick="flipCard()" role="button" tabindex="0" aria-pressed="false" aria-label="Flashcard: tap or press enter to flip">
-        <div class="inner">
-          <div class="front" id="cardFront"><small>Front</small></div>
-          <div class="back" id="cardBack"><small>Back</small></div>
-        </div>
-      </div>
+<button onclick="copyAllAnswers()">Copy All with Answers</button>
+<button onclick="copyAllText()">Copy All as Text</button>
 
-      <div class="controls">
-        <button onclick="markAnswer(true)" id="correctBtn" aria-label="Mark as correct">✔ Correct</button>
-        <button onclick="markAnswer(false)" id="wrongBtn" aria-label="Mark as wrong">✖ Wrong</button>
-      </div>
-    </section>
-    <div id="resultsContainer" style="display: none;"></div>
+<script src="questions.js"></script>
+<script>
+// Function to shuffle and pick random questions
+function getRandomQuestions(allQuestions, count = 10) {
+    const shuffled = [...allQuestions].sort(() => 0.5 - Math.random());
+    return shuffled.slice(0, count);
+}
 
-  </main>
+// Generate random questions
+const randomQuestions = getRandomQuestions(questions, 10);
+const container = document.getElementById('test-container');
 
-  <div id="toast" class="toast" role="alert" aria-live="assertive"></div>
+let currentTopic = '';
+randomQuestions.forEach((q, index) => {
+    if (q.topic !== currentTopic) {
+        container.innerHTML += `<h2>${q.topic}</h2>`;
+        currentTopic = q.topic;
+    }
+    container.innerHTML += `<h3>${q.type} Question ${index+1}</h3>`;
+    container.innerHTML += `<div class="question"><p>${q.question}</p><textarea id="answer-${index}" placeholder="Type your answer here..."></textarea></div>`;
+});
 
-  <script src="script.js"></script>
+// Copy all answers including user input
+function copyAllAnswers() {
+    let allAnswers = '';
+    randomQuestions.forEach((q, index) => {
+        const ans = document.getElementById(`answer-${index}`).value;
+        allAnswers += `${q.topic} | ${q.type} | Q: ${q.question}\nA: ${ans}\n\n`;
+    });
+    navigator.clipboard.writeText(allAnswers).then(() => {
+        alert('All questions and your answers copied to clipboard!');
+    });
+}
+
+// Copy all questions as plain text only
+function copyAllText() {
+    let allText = '';
+    randomQuestions.forEach((q, index) => {
+        allText += `Q${index+1} [${q.topic} - ${q.type}]: ${q.question}\n\n`;
+    });
+    navigator.clipboard.writeText(allText).then(() => {
+        alert('All questions copied as plain text!');
+    });
+}
+</script>
+
 </body>
 </html>

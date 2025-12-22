@@ -1,8 +1,8 @@
-# Squidly0208 Developer Portfolio
+# Squidly2519 Developer Portfolio
 
 ![Logo](./images/logo.png)
 
-This is the official developer portfolio for **Squidly0208**, showcasing projects, skills, and experience as a software developer at SAPHI Engineering.
+This is the official developer portfolio for **Squidly2519**, showcasing projects, skills, and experience as a software developer at SAPHI Engineering.
 
 ## 🎨 Features
 
@@ -17,8 +17,8 @@ This is the official developer portfolio for **Squidly0208**, showcasing project
 ## 🖼 Color Palette
 
 * Background: `#171717`
-* Primary Accent: `#1B9AAA`
-* Secondary Accent: `#060D6A0`
+* Primary Accent: `#41ead4`
+* Secondary Accent: `#c0b8dd`
 * Text: `#fdfffc`
 * Muted Text: `#a6a6a6`
 
@@ -55,4 +55,4 @@ This project is licensed under the MIT License. Feel free to use and modify for 
 
 ---
 
-💻 **Created by Squidly0208** | 🚀 Powered by passion for code
+💻 **Created by Squidly2519** | 🚀 Powered by passion for code

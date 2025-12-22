@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <title>Christmas Gift 🎄</title>
+    <link rel="stylesheet" href="style.css" />
+</head>
+
+<body>
+
+    <canvas id="snow"></canvas>
+
+    <div class="container" id="login">
+        <h1>🎄 Merry Christmas</h1>
+        <p>Enter your secret code</p>
+        <input type="text" id="codeInput" placeholder="Enter code..." />
+        <button onclick="unlock()">Open Gift</button>
+        <p id="error"></p>
+    </div>
+
+    <div class="container hidden" id="gift">
+        <h1 id="name"></h1>
+    
+        <p class="message" id="message"></p>
+
+        <h2>✨ Memories I Treasure</h2>
+        <ul id="memories"></ul>
+    </div>
+
+    <script src="data.js"></script>
+    <script src="script.js"></script>
+</body>
+
+</html>
