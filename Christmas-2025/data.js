@@ -72,22 +72,22 @@ const data = [
   {
     person: "Nicole",
     message: "Merry Christmas. Even though I’ve only met you this year, you’ve made me feel like family.",
-    memories: []
+    memories: ["I loved how I was able to feel at home and how you make sure i'm comfortable and safe and having a good time.", "I rememeber the wedding and coming up to you just to hug you bc you made me feel so welcome + the whole winter queen fro narnia vibes were awesome."]
   },
   {
     person: "Matt",
     message: "Merry Christmas. You can achieve whatever dreams you have and never let anyone tell you otherwise.",
-    memories: []
+    memories: ["this isn't a memory or somethig, but i wanted to say this, i struggle with anxiety and depression, i take medication for it, and I know this isn't really something i should say or really know about since its not really my business, but theres nothing wrong with you for thinking or feeling these things, millions upon billions or people world wide have similar thoughts, but still your unique and no one has been or knows what you have been through, and you are incredibly strong for going through it and not giving up, and I'm proud to call you my step brother. if you ever need someone to talk to, im here."]
   },
   {
     person: "Will",
     message: "Merry Christmas! I hope you have an amazing Christmas.",
-    memories: []
+    memories: ["Hi will, I know you are an incredible person, just form the short time we met at the wedding, and i wanted to say thankyou for making me feel included"]
   },
   {
     person: "Mehgan",
     message: "Merry Christmas! I count you as family and hope you have an amazing time.",
-    memories: []
+    memories: ["I remember the wedding and how you made me feel included and welcome, or atleast tried to, and i wanted to say I really appreciate it."]
   },
   {
     person: "Jackie",
