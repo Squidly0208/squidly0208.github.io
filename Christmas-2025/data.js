@@ -70,7 +70,7 @@ const data = [
     memories: []
   },
   {
-    person: "Nichole",
+    person: "Nicole",
     message: "Merry Christmas. Even though I’ve only met you this year, you’ve made me feel like family.",
     memories: []
   },
@@ -85,7 +85,7 @@ const data = [
     memories: []
   },
   {
-    person: "Megan",
+    person: "Mehgan",
     message: "Merry Christmas! I count you as family and hope you have an amazing time.",
     memories: []
   },
