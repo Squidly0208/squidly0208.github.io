@@ -67,7 +67,7 @@ const data = [
   {
     person: "Dad",
     message: "Merry Christmas Dad. I’m glad we got back into contact this year. You’ve made me smile so much.",
-    memories: []
+    memories: ["I have so many memories of us together, but a few stand out to me, like i remember coming back from the beach pools in sydney one time, and i was on you shoulder, all be it i rememebr getting hit by branches but yea", "I also rememeber going to the farm with you and swimming at the crossing, and well as spending christmas there which was really special to me."]
   },
   {
     person: "Nicole",
